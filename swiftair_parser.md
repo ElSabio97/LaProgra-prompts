@@ -41,6 +41,7 @@ El contenido del slab y de la descripción del evento provienen de buscar un mat
 
 Aquí tienes un ejemplo de un evento webcal asociado a un ID de `swiftairCodes.txt`:
 
+```
 BEGIN:VEVENT
 CREATED:20260725T103900Z
 DESCRIPTION:Leave / Vacaciones                      - V   \nFull day\nLoc
@@ -57,7 +58,7 @@ UID:1795C28E-DDA5-43E6-B292-672D4B677C03
 X-APPLE-CREATOR-IDENTITY:aero.aims.eCrew
 X-APPLE-CREATOR-TEAM-IDENTITY:CRVQTJ2BFS
 END:VEVENT
-
+```
 ### Flujo de detección de eventos
 1. Comprobar el campo SUMMARY y distinguir entre vuelos y todo lo demás. 
     Para ello comprobar si las letras de la primera palabra contienen numeros. Eso es el indicativo de que el evento es un vuelo puesto que ningún ID de `swiftairCodes.txt` contiene números. Ej de vuelos. `SUMMARY:4646  HAJ-LGG` o `SUMMARY:GRD1319  DUS-CGN` o `SUMMARY:IB539  MAD-LIS`
