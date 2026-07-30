@@ -12,7 +12,7 @@ Swiftair utiliza la app eCrew para publicar las programaciones de sus tripulante
 - Cuando el usuario introduce el enlace webcal por primera vez en el onboarding deben parsearse todos los eventos provenientes del mes en curso y en adelante.
 
 A continuación muestro un ejemplo del contenido del descargable del enlace webcal:
-
+```
 BEGIN:VEVENT
 CREATED:20260303T225949Z
 DESCRIPTION:Reporting time : 2100\n4646  - HAJ  (A2141) - LGG  (E2254)\n*
@@ -28,7 +28,7 @@ UID:012B6285-F07B-4810-9239-E0E09D9A1020
 X-APPLE-CREATOR-IDENTITY:aero.aims.eCrew
 X-APPLE-CREATOR-TEAM-IDENTITY:CRVQTJ2BFS
 END:VEVENT
-
+```
 
 - Del campo DTSTART podemos extraer el uso horario (TZID) y la fecha y hora de comienzo del evento
 - Del campo DTEND lo mismo pero para el final del evento.
