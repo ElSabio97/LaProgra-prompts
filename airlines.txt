@@ -1,0 +1,377 @@
+﻿Name,ICAO,IATA
+ABX Air,ABX,GB
+Aegean Airlines,AEE,A3
+Aer Lingus,EIN,EI
+Aero Mongolia,MNG,M0
+Aero Republica,RPB,P5
+Aeroflot,AFL,SU
+Aeroitalia,AEZ,XZ
+Aerolineas Argentinas,ARG,AR
+Aeromexico,AMX,AM
+Africa World Airlines,AFW,AW
+Air Algérie,DAH,AH
+Air Arabia,ABY,G9
+Air Astana,KZR,KC
+Air Astra,AWA,2A
+Air Atlanta Icelandic,ABD,CC
+Air Austral,REU,UU
+Air Baltic,BTI,BT
+Air Botswana,BOT,BP
+Air Cairo,MSC,SM
+Air Caledonie,TPC,TY
+Air Cambodia,KHV,K6
+Air Canada,ACA,AC
+Air Caraibes,FWI,TX
+Air Changan,CGN,9H
+Air China,CCA,CA
+Air Corsica,CCM,XK
+Air Dolomiti,DLA,EN
+Air Europa,AEA,UX
+Air France,AFR,AF
+Air Guilin,CGH,GT
+Air Hong Kong,AHK,LD
+Air India,AIC,AI
+Air India Express,AXB,IX
+Air Koryo,KOR,JS
+Air Macau,AMU,NX
+Air Mauritius,MAU,MK
+Air Montenegro,MNE,4O
+Air New Zealand,ANZ,NZ
+Air Niugini,ANG,PX
+Air Nostrum,ANE,YW
+Air Peace,APK,P4
+Air Premia,APZ,YP
+Air Senegal,SZN,HC
+Air Serbia,ASL,JU
+Air Seychelles,SEY,HM
+Air Tahiti,VTA,VT
+Air Tahiti Nui,THT,TN
+Air Tanzania,ATC,TC
+Air Transat,TSC,TS
+Air Vanuatu,AVN,NF
+Aircalin,ACI,SB
+Airhub Airlines,GJM,RE
+Airline GEO SKY,GEL,D4
+Airlink,LNK,4Z
+AIRZETA,AIH,KJ
+AJet,TKJ,VF
+Akasa Air,AKJ,QP
+Alaska Airlines,ASA,AS
+Albastar,LAV,AP
+AlMasria Universal Airlines,LMU,UJ
+Amelia,AIA,8R
+American Airlines,AAL,AA
+ANA,ANA,NH
+APG Airlines,RIV,GP
+Arajet,DWI,DM
+Arkia Israeli Airlines,AIZ,IZ
+Asiana Airlines,AAR,OZ
+ASKY,SKK,KP
+ASL Airlines Belgium,TAY,3V
+ASL Airlines France,FPO,5O
+ASL Airlines Ireland,ABR,5H
+Atlantic Airways,FLI,RC
+Atlas Air,GTI,5Y
+Austrian,AUA,OS
+Avianca,AVA,AV
+Avianca Costa Rica,LRC,LR
+Avianca Ecuador,GLG,2K
+Avion Express,NVD,X9
+Avion Express Malta,MLH,4X
+Azerbaijan Airlines,AHY,J2
+Azores Airlines,RZO,S4
+Azul Brazilian Airlines,AZU,AD
+Badr Airlines,BDR,J4
+Bahamasair,BHS,UP
+Bamboo Airways,BAV,QH
+Bangkok Airways,BKP,PG
+Batik Air,BTK,ID
+Batik Air Malaysia,MXD,OD
+BBN Airlines,BBT,B5
+Belavia Belarusian Airlines,BRU,B2
+Biman Bangladesh Airlines,BBC,BG
+Binter Canarias,IBB,NT
+Blue Bird Airways,BBG,BZ
+BoA Boliviana de Aviacion,BOV,OB
+Braathens Regional Airways,BRX,TF*
+British Airways,BAW,BA
+Brussels Airlines,BEL,SN
+Bulgaria Air,LZB,FB
+Camair-Co,CRC,QC
+Capital Airlines,CBJ,JD
+Cargojet Airways,CJT,W8
+Cargolux,CLX,CV
+Caribbean Airlines,BWA,BW
+Carpatair,KRP,V3
+Cathay Pacific,CPA,CX
+Cebu Pacific,CEB,5J
+CemAir,KEM,5Z
+Chair Airlines,CSW,CS
+Chalair,CLG,CE
+Challenge Airlines (BE),CHG,X7
+Challenge Airlines (IL),ICL,5C
+China Airlines,CAL,CI
+China Cargo Airlines,CKK,CK
+China Eastern,CES,MU
+China Express Airlines,HXA,G5
+China Postal Airlines,CYZ,CF
+China Southern Airlines,CSN,CZ
+China United Airlines,CUA,KN
+Citilink,CTV,QG
+CityJet,BCY,WX
+Clic Air,EFY,VE
+Condor,CFG,DE
+COPA Airlines,CMP,CM
+Corendon Airlines,CAI,XC
+Corsair International,CRL,SS
+Croatia Airlines,CTN,OU
+Cubana,CUB,CU
+Cyprus Airways,CYP,CY
+DAN AIR,DNA,DN
+DAT (LT),DNU,R6*
+Delta Air Lines,DAL,DL
+DHL Air,DHK,D0
+DHL Aviation,DHX,ES*
+Discover Airlines,OCN,4Y
+Domestic Airlines,DTH,SF
+Eastern Airlines,,2D*
+EasyJet,EZY,U2
+Edelweiss Air,EDW,WK
+Egyptair,MSR,MS
+EL AL,ELY,LY
+Electra Airways,EAF,3E
+Emirates,UAE,EK
+Estafeta Cargo,ESF,E7
+Ethiopian Airlines,ETH,ET
+Etihad Airways,ETD,EY
+EuroAtlantic Airways,MMZ,YU
+European Air Transport,BCS,QY
+Eurowings,EWG,EW
+EVA Air,EVA,BR
+Eznis Airways,EZA,MG
+Fastjet Zimbabwe,FJW,FN
+FedEx Express,FDX,FX
+Fiji Airways,FJI,FJ
+Finnair,FIN,AY
+FlexFlight,FXT,W2
+Fly Baghdad,FBA,IF
+Fly Namibia,FLN,WV
+Fly2Sky,VAW,F6*
+flyadeal,FAD,F3
+flydubai,FDB,FZ
+FlyGabon,ABS,J7
+Flynas,KNE,XY
+FLYONE,FIA,5F
+Freebird Airlines,FHY,FH
+French Bee,FBU,BF
+Fuzhou Airlines,FZA,FU
+Garuda Indonesia,GIA,GA
+Georgian Airways,TGZ,A9
+German Airways,GER,ZQ
+GetJet Airlines,GJT,GW*
+Global Airways and Lift,GBB,GE
+GlobalX,GXA,G6
+GOL Linhas Aereas,GLO,G3
+Greater Bay Airlines,HGB,HB
+Gulf Air,GFA,GF
+GX Airlines,CBG,GX
+Hahnair,HHN,HR*
+Hainan Airlines,CHH,HU
+Hawaiian Airlines,HAL,HA
+Hebei Airlines,HBH,NS
+Hello Jets,HLJ,H3
+Heston Airlines,HST,HN*
+Hi Fly,HFY,5K*
+Hi Fly (Malta),HFM,3L*
+Himalaya Airlines,HIM,H9
+Hong Kong Air Cargo,HKC,RH
+Hong Kong Airlines,CRK,HX
+Hong Kong Express Airways,HKE,UO
+IBERIA,IBE,IB
+Iberojet,OBS,6O
+Iberojet Airlines,EVE,E9
+Ibom Air,IAN,QI
+Icelandair,ICE,FI
+Ikar,KAR,EO
+IndiGo,IGO,6E
+Iran Air,IRA,IR
+Iran Airtour Airline,IRB,B9
+Iran Aseman Airlines,IRC,EP
+Israir,ISR,6H
+ITA Airways,ITY,AZ
+Japan Airlines,JAL,JL
+Japan Transocean Air,JTA,NU
+Jazeera Airways,JZR,J9
+JD Airlines,JDL,JG
+Jeju Air,JJA,7C
+JetBlue,JBU,B6
+JetSMART Argentina,JES,WJ
+JetSMART Chile,JAT,JA
+JetSMART Peru,JAP,JZ
+Jettime,JTD,JP*
+Jin Air,JNA,LJ
+Jordan Aviation,JAV,R5
+Juneyao Airlines,DKH,HO
+Kam Air,KMF,RQ
+Kenya Airways,KQA,KQ
+KlasJet,KLJ,KJ*
+KLM,KLM,KL
+KM Malta Airlines,KMM,KM
+Korean Air,KAL,KE
+Kunming Airlines,KNA,KY
+Kuwait Airways,KAC,KU
+La Compagnie,DJT,B0
+LAM,LAM,TM
+Lao Airlines,LAO,QV
+LATAM Airlines Brasil,TAM,JJ
+LATAM Airlines Colombia,ARE,4C
+LATAM Airlines Ecuador,LNE,XL
+LATAM Airlines Group,LAN,LA
+LATAM Airlines Paraguay,LAP,PZ
+LATAM Airlines Peru,LPE,LP
+LATAM Cargo Brasil,LTG,M3
+LATAM Cargo Chile,LCO,UC
+Link Airways,,FC
+Lion Air,LNI,JT
+Loganair,LOG,LM
+Loong Air,CDC,GJ
+LOT Polish Airlines,LOT,LO
+Lucky Air,LKE,8L
+Lufthansa,DLH,LH
+Lufthansa Cargo,GEC,LH
+Lufthansa City Airlines,LHX,VL
+Lufthansa CityLine,CLH,CL
+Luxair,LGL,LG
+Madagascar Airlines,MGY,MD
+Malaysia Airlines,MAS,MH
+Mandarin Airlines,MDA,AE
+Martinair Cargo,MPH,MP
+MasAir,MAA,M7
+Mauritania Airlines International,MAI,L6
+Mavi Gök Airlines (MGA),MGH,4M
+MEA,MEA,ME
+MIAT Mongolian Airlines,MGL,OM
+MNG Airlines,MNB,MB
+Myanmar Airways International,MMA,8M
+Myanmar National Airlines,UBA,UB
+National Airlines,NCR,N8
+Nauru Airlines,RON,ON
+Neos,NOS,NO
+Nesma Airlines,NMA,NE
+New Pacific Airlines,RVF,7H
+Nile Air,NIA,NP
+Nippon Cargo Airlines,NCA,KZ
+Nok Air,NOK,DD
+NordStar,TYA,Y7
+Nordwind Airlines,NWS,N4
+Norra,FCM,N7
+Nouvelair,LBT,BJ
+Okay Airways,OKA,BK
+Olympic Air,OAL,OA
+Oman Air,OMA,WY
+Overland Airways,OLA,OF
+Pakistan International Airlines,PIA,PK
+PAL Express,GAP,2P
+Paranair,AZP,ZP
+Pegasus Airlines,PGT,PC
+Petroleum Air Services,PER,UF
+PGA-Portugalia Airlines,PGA,NI*
+Philippine Airlines,PAL,PR
+Plus Ultra,PUE,PU
+Polar Air Cargo,PAC,PO
+PopulAir,APF,HP
+Porter Airlines,POE,PD
+Poste Air Cargo,MSA,M4
+Precision Air,PRF,PW
+Privilege Style,PVG,P6
+Proflight Zambia,PFZ,P0
+Qantas,QFA,QF
+Qatar Airways,QTR,QR
+Qazaq Air,QAZ,IQ
+Qingdao Airlines,QDA,QW
+Red Sea Airlines,RSX,4S
+Riyadh Air,RXI,RX
+Rossiya Airlines,SDM,FV
+Royal Air Maroc,RAM,AT
+Royal Brunei,RBA,BI
+Royal Jordanian,RJA,RJ
+Ruili Airlines,RLH,DR
+RusLine,RLU,7R
+RwandAir,RWD,WB
+Ryanair,RYR,FR
+Ryanair UK,RUK,RK
+S7 Airlines,SBI,S7
+Safair,SFR,FA
+Salam Air,OMS,OV
+SAS,SAS,SK
+SATA  Air Acores,SAT,SP
+Saudi Arabian Airlines,SVA,SV
+SCAT Airlines,VSV,DV
+Scoot,TGW,TR
+SF Airlines,CSS,O3
+Shandong Airlines,CDG,SC
+Shanghai Airlines,CSH,FM
+Shenzhen Airlines,CSZ,ZH
+Sichuan Airlines,CSC,3U
+Silk Way West Airlines,AZG,7L
+Singapore Airlines,SIA,SQ
+SKY Airline,SKU,H2
+Sky express,SEH,GQ
+SkyUp Airlines,SQP,PQ
+Smartavia,AUL,5N
+SmartLynx Airlines Malta,LYX,2N*
+Smartwings,TVS,QS
+Solomon Airlines,SOL,IE
+Somon Air,SMR,SZ
+South African Airways,SAA,SA
+Southwest Airlines,SWA,WN
+Southwind Airlines,STW,2S
+SpiceJet,SEJ,SG
+SriLankan Airlines,ALK,UL
+STARLUX Airlines,SJX,JX
+Sun Country Airlines,SCX,SY
+SunExpress,SXS,XQ
+Suparna Airlines,YZR,Y8
+Swiftair,SWT,WT
+SWISS,SWR,LX
+Syrianair,SYR,RB
+T'way Air,TWB,TW
+TAAG Angola Airlines,DTA,DT
+TACA,TAI,TA
+TAG Airlines,TGU,5U
+Tailwind Airlines,TWI,TI*
+TAP Air Portugal,TAP,TP
+TAROM,ROT,RO
+Thai Airways International,THA,TG
+Thai Lion Air,TLM,SL
+Tianjin Airlines,GCR,GS
+Tibet Airlines,TBA,TV
+TUIfly,TUI,X3
+Tunisair,TAR,TU
+Turkish Airlines,THY,TK
+TUS Airways,CYF,U8
+ULS Airlines Cargo,KZU,GO*
+UNI AIR,UIA,B7
+United Airlines,UAL,UA
+United Nigeria Airlines,NUA,UN
+UPS Airlines,UPS,5X
+Ural Airlines,SVR,U6
+Urumqi Air,CUH,UQ
+US-Bangla Airlines,UBG,BS
+UTair,UTA,UT
+Uzbekistan Airways,UZB,HY
+Vietjet,VJC,VJ
+Vietnam Airlines,HVN,VN
+Virgin Atlantic,VIR,VS
+Virgin Australia,VAU,VA
+Volaris,VOI,Y4
+Volotea,VOE,V7
+Vueling,VLG,VY
+Wamos Air,PLM,EB
+West Air,CHB,PN
+WestJet,WJA,WS
+White coloured by you,WHT,WI
+Wideroe,WIF,WF
+World2Fly,WFL,2W
+Xiamen Airlines,CXA,MF
+YTO Cargo Airlines,HYT,YG
