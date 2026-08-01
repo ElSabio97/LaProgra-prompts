@@ -23,8 +23,8 @@ Antes de comenzar:
 - `swiftair_parser.md`: importación y procesamiento del Webcal de Swiftair.
 - `iberia_parser.md`: importación y anonimización del CSV de Iberia.
 - `upload_instructions.md`: instrucciones de importación.
-- `iberia_codes.txt`: descripciones de códigos de Iberia.
-- `swiftair_codes.txt`: descripciones de códigos de Swiftair.
+- `iberia_codes.csv`: descripciones de códigos de Iberia.
+- `swiftair_codes.csv`: descripciones de códigos de Swiftair.
 - `download_pdf.md`: generación de PDF.
 - `new_event.md`: creación manual de actividades.
 - `friendships.md`: gestión de amistades.
@@ -74,7 +74,7 @@ Contiene estas columnas:
 ## 4. Infraestructura y arquitectura
 
 - Nombre de la aplicación: **LaProgra**.
-- Dominio de producción: `laprogra.app`. Lo compré en `clouflare.com`
+- Dominio de producción: `laprogra.app`. Lo compré en `cloudflare.com`
 - Alojamiento de la aplicación: **Vercel**.
 - Base de datos y autenticación: **Supabase**.
 - Elige el stack más adecuado, priorizando:
@@ -161,7 +161,7 @@ La arquitectura no debe asumir que las futuras aerolíneas utilizarán Webcal o 
 - El usuario podrá cambiar el idioma a inglés.
 - La preferencia de idioma se guardará en su perfil.
 - Los textos de la interfaz deben tener la ortografía correcta.
-- Las descripciones procedentes de los archivos de códigos (como swiftairCodes.txt y iberiaCodes.txt) no deben traducirse.
+- Las descripciones procedentes de los archivos de códigos (como swiftair_codes.csv y iberia_codes.csv) no deben traducirse.
 - Los códigos, rutas y datos originales de los eventos no deben traducirse.
 - La interfaz debe aplicar un único criterio razonable de accesibilidad:
   - Buen contraste favoreciendo la estética más que la accesibilidad.
@@ -256,9 +256,9 @@ Al pulsar un slab se mostrará:
 
 - Nombre del usuario propietario.
 - Texto del slab.
-- Ciudades de origen y destino, cuando corresponda, obtenidas mediante `airports.txt`.
+- Ciudades de origen y destino, cuando corresponda, obtenidas mediante `airports.csv`.
 - Horario.
-- Descripción obtenida de `iberia_codes.txt` o `swiftair_codes.txt`.
+- Descripción obtenida de `iberia_codes.csv` o `swiftair_codes.csv`.
 - Número de vuelo, cuando exista.
 - Si el vuelo es como pasajero pondrá: `Vuelo en situación en Ryanair FR2430` o `Deadhead flight on Ryanair FR2430`
 - Acciones permitidas para ese evento.
@@ -442,11 +442,11 @@ Construye la aplicación completa siguiendo este documento y los archivos adjunt
   - Configuración de Cron.
   - Despliegue en Vercel.
   - Configuración del dominio.
-- Incluye un archivo `tree.txt` en la raíz.
-- `tree.txt` debe mostrar el árbol completo del proyecto.
+- Incluye un archivo `tree.csv` en la raíz.
+- `tree.csv` debe mostrar el árbol completo del proyecto.
 - No incluyas datos de demostración.
 - Incluye las pruebas mínimas necesarias en una lista de comprobaciones manuales.
-- Entrega los archivos individualmente en formato `.txt`.
+- Entrega los archivos individualmente en formato `.csv`.
 - Indica para cada archivo:
   - Nombre del archivo entregado.
   - Ruta de destino.
@@ -454,7 +454,7 @@ Construye la aplicación completa siguiendo este documento y los archivos adjunt
 
 Ejemplo:
 
-`src_app_page.tsx.txt` → `src/app/page.tsx`
+`src_app_page.tsx.csv` → `src/app/page.tsx`
 
 Los archivos de texto deben poder copiarse directamente a su ubicación dentro del proyecto.
 
