@@ -3429,7 +3429,7 @@ KLU,Klagenfurt,Europe/Vienna
 HFT,Hammerfest,Europe/Oslo
 HVG,Honningsvag,Europe/Oslo
 MEH,Mehamn,Europe/Oslo
-VDS,Vads?,Europe/Oslo
+VDS,Vads,Europe/Oslo
 IKA,Tehran,Asia/Tehran
 MHD,Mashhad,Asia/Tehran
 UIK,Ust Ilimsk,Asia/Irkutsk
@@ -3527,9 +3527,9 @@ NAQ,Qaanaaq,America/Thule
 JHS,Sisimiut,America/Nuuk
 JUV,Upernavik,America/Nuuk
 JQA,Uummannaq,America/Nuuk
-GRY,Gr?msey,Atlantic/Reykjavik
+GRY,Grmsey,Atlantic/Reykjavik
 THO,Thorshofn,Atlantic/Reykjavik
-VPN,Vopnafj?r?ur,Atlantic/Reykjavik
+VPN,Vopnafjrur,Atlantic/Reykjavik
 YWS,Whistler,America/Vancouver
 YAA,Anahim Lake,America/Vancouver
 YWM,Williams Harbour,America/St_Johns
@@ -3537,7 +3537,7 @@ YFX,St. Lewis,America/St_Johns
 YHA,Port Hope Simpson,America/St_Johns
 YRG,Rigolet,America/Goose_Bay
 YCK,Colville Lake,America/Inuvik
-YLE,What?,America/Edmonton
+YLE,What,America/Edmonton
 SUR,Summer Beaver,America/Toronto
 YAX,Angling Lake,America/Winnipeg
 WNN,Wunnumin Lake,America/Winnipeg
@@ -3547,8 +3547,8 @@ KIF,Kingfisher Lake,America/Winnipeg
 YOG,Ogoki Post,America/Toronto
 YHP,Poplar Hill,America/Winnipeg
 YKU,Chisasibi,America/Toronto
-ZTB,T?te-?-la-Baleine,America/Blanc-Sablon
-ZLT,La Tabati?re,America/Blanc-Sablon
+ZTB,Tte--la-Baleine,America/Blanc-Sablon
+ZLT,La Tabatire,America/Blanc-Sablon
 YAC,Cat Lake,America/Winnipeg
 YAG,Fort Frances,America/Winnipeg
 XKS,Kasabonika,America/Winnipeg
@@ -3595,7 +3595,7 @@ YPO,Peawanuck,America/Toronto
 YPW,Powell River,America/Vancouver
 YQD,The Pas,America/Winnipeg
 YQN,Nakina,America/Toronto
-YRA,Gam?t?,America/Edmonton
+YRA,Gamti,America/Edmonton
 YRL,Red Lake,America/Winnipeg
 YSF,Stony Rapids,America/Regina
 YSK,Sanikiluaq,America/Iqaluit
@@ -3622,14 +3622,14 @@ ZTM,Shamattawa,America/Winnipeg
 ZUM,Churchill Falls,America/Goose_Bay
 ZWL,Wollaston Lake,America/Regina
 BLJ,Batna,Africa/Algiers
-CBH,B?char,Africa/Algiers
+CBH,Bchar,Africa/Algiers
 BMW,Bordj Badji Mokhtar,Africa/Algiers
 ELU,Guemar,Africa/Algiers
 KMS,Kumasi,Africa/Accra
 HDF,Heringsdorf,Europe/Berlin
-HEI,B?sum,Europe/Berlin
+HEI,Bsum,Europe/Berlin
 HGL,Helgoland,Europe/Berlin
-SJY,Sein?joki / Ilmajoki,Europe/Helsinki
+SJY,Seinjoki / Ilmajoki,Europe/Helsinki
 NQT,Nottingham,Europe/London
 DSA,"Doncaster, Sheffield",Europe/London
 CAL,Campbeltown,Europe/London
@@ -3650,21 +3650,21 @@ CNL,Sindal,Europe/Copenhagen
 LKN,Leknes,Europe/Oslo
 OSY,Namsos,Europe/Oslo
 MQN,Mo i Rana,Europe/Oslo
-RVK,R?rvik,Europe/Oslo
-RET,R?st,Europe/Oslo
+RVK,Rrvik,Europe/Oslo
+RET,Rst,Europe/Oslo
 SDN,Sandane,Europe/Oslo
 SOG,Sogndal,Europe/Oslo
-SVJ,Svolv?r,Europe/Oslo
+SVJ,Svolvr,Europe/Oslo
 SOJ,Sorkjosen,Europe/Oslo
-VAW,Vard?,Europe/Oslo
-VRY,V?r?y,Europe/Oslo
+VAW,Vard,Europe/Oslo
+VRY,Vry,Europe/Oslo
 BZG,Bydgoszcz,Europe/Warsaw
 LCJ,Lodz,Europe/Warsaw
-OSD,?stersund,Europe/Stockholm
+OSD,stersund,Europe/Stockholm
 HFS,Hagfors,Europe/Stockholm
 KSD,Karlstad,Europe/Stockholm
 TYF,Torsby,Europe/Stockholm
-AGH,?ngelholm,Europe/Stockholm
+AGH,ngelholm,Europe/Stockholm
 SQO,Mohed,Europe/Stockholm
 HMV,Hemavan,Europe/Stockholm
 VNT,Ventspils,Europe/Riga
@@ -3687,7 +3687,7 @@ TVA,Morafenobe,Indian/Antananarivo
 WTA,Tambohorano,Indian/Antananarivo
 WTS,Tsiroanomandidy,Indian/Antananarivo
 WAM,Ambatondrazaka,Indian/Antananarivo
-WPB,Port Berg?,Indian/Antananarivo
+WPB,Port Berg,Indian/Antananarivo
 DWB,Soalala,Indian/Antananarivo
 WMP,Mampikony,Indian/Antananarivo
 WMA,Mandritsara,Indian/Antananarivo
@@ -3725,7 +3725,7 @@ OXB,Bissau,Africa/Bissau
 SMW,Smara,Africa/El_Aaiun
 VIL,Dakhla,Africa/El_Aaiun
 ESU,Essadouira,Africa/Casablanca
-EUN,El Aai?n,Africa/El_Aaiun
+EUN,El Aain,Africa/El_Aaiun
 NDR,El Aroui,Africa/Casablanca
 RAI,"Praia, Santiago Island",Atlantic/Cape_Verde
 SFL,"Sao Filipe, Fogo Island",Atlantic/Cape_Verde
@@ -3831,13 +3831,13 @@ VLD,Valdosta,America/New_York
 WRL,Worland,America/Denver
 YKM,Yakima,America/Los_Angeles
 ECN,Nicosia,Asia/Famagusta
-RJL,Logro?o-Agoncillo,Europe/Madrid
-IDY,?le d'Yeu,Europe/Paris
-ANE,Angers/Marc?,Europe/Paris
-LTT,La M?le,Europe/Paris
+RJL,Logroo-Agoncillo,Europe/Madrid
+IDY,le d'Yeu,Europe/Paris
+ANE,Angers/Marc,Europe/Paris
+LTT,La Mle,Europe/Paris
 JSY,Syros Island,Europe/Athens
-PEV,P?cs-Pog?ny,Europe/Budapest
-SOB,S?rmell?k,Europe/Budapest
+PEV,Pcs-Pogny,Europe/Budapest
+SOB,Srmellk,Europe/Budapest
 AOT,Aosta,Europe/Rome
 QSR,Salerno,Europe/Rome
 CVU,Corvo,Atlantic/Azores
@@ -3851,7 +3851,7 @@ ADF,Adiyaman,Europe/Istanbul
 ISE,Isparta,Europe/Istanbul
 EDO,Balikesir Korfez,Europe/Istanbul
 SZF,Samsun,Europe/Istanbul
-ILZ,?ilina,Europe/Bratislava
+ILZ,ilina,Europe/Bratislava
 GDT,Cockburn Town,America/Grand_Turk
 MDS,Middle Caicos,America/Grand_Turk
 SLX,Salt Cay,America/Grand_Turk
@@ -3864,12 +3864,12 @@ AHS,Ahuas,America/Tegucigalpa
 PEU,Puerto Lempira,America/Tegucigalpa
 MIJ,Mili Island,Pacific/Majuro
 CYW,Celaya,America/Mexico_City
-CUA,Ciudad Constituci?n,America/Mazatlan
+CUA,Ciudad Constitucin,America/Mazatlan
 GUB,Guerrero Negro,America/Tijuana
 JAL,Jalapa,America/Mexico_City
-CTD,Chitr?,America/Panama
-ONX,Col?n,America/Panama
-JQE,Jaqu?,America/Panama
+CTD,Chitr,America/Panama
+ONX,Coln,America/Panama
+JQE,Jaqu,America/Panama
 PLP,La Palma,America/Panama
 TTQ,Roxana,America/Costa_Rica
 BCL,Pococi,America/Costa_Rica
@@ -3943,7 +3943,7 @@ FTA,Futuna Island,Pacific/Efate
 IPA,Ipota,Pacific/Efate
 TGJ,Tiga,Pacific/Noumea
 BMY,Waala,Pacific/Noumea
-ILP,?le des Pins,Pacific/Noumea
+ILP,le des Pins,Pacific/Noumea
 FBD,Faizabad,Asia/Kabul
 AJF,Al-Jawf,Asia/Riyadh
 WAE,Wadi-al-dawasir,Asia/Riyadh
@@ -4032,26 +4032,26 @@ GGS,Gobernador Gregores,America/Argentina/Rio_Gallegos
 SST,Santa Teresita,America/Argentina/Buenos_Aires
 NEC,Necochea,America/Argentina/Buenos_Aires
 JDO,Juazeiro Do Norte,America/Fortaleza
-LEC,Len??is,America/Bahia
-MEA,Maca?,America/Sao_Paulo
-MII,Mar?lia,America/Sao_Paulo
-VDC,Vit?ria Da Conquista,America/Bahia
+LEC,Lenis,America/Bahia
+MEA,Maca,America/Sao_Paulo
+MII,Marlia,America/Sao_Paulo
+VDC,Vitria Da Conquista,America/Bahia
 RIA,Santa Maria,America/Sao_Paulo
 TOW,Toledo,America/Sao_Paulo
 ESR,El Salvador,America/Santiago
 ZPC,Pucon,America/Santiago
 SOD,Sorocaba,America/Sao_Paulo
-SCY,San Crist?bal,Pacific/Galapagos
+SCY,San Cristbal,Pacific/Galapagos
 LOH,La Toma (Catamayo),America/Guayaquil
 ESM,Esmeraldas,America/Guayaquil
 PSY,Stanley,Atlantic/Stanley
 CRC,Cartago,America/Bogota
-LQM,Puerto Legu?zamo,America/Bogota
+LQM,Puerto Leguzamo,America/Bogota
 LPD,La Pedrera,America/Bogota
-NQU,Nuqu?,America/Bogota
-PDA,Puerto In?rida,America/Bogota
+NQU,Nuqu,America/Bogota
+PDA,Puerto Inrida,America/Bogota
 EYP,Yopal,America/Bogota
-GYA,Guayaramer?n,America/La_Paz
+GYA,Guayaramern,America/La_Paz
 PUR,Puerto Rico/Manuripi,America/La_Paz
 RIB,Riberalta,America/La_Paz
 REY,Reyes,America/La_Paz
@@ -4059,16 +4059,16 @@ SRJ,San Borja,America/La_Paz
 ORG,Paramaribo,America/Paramaribo
 MVS,Mucuri,America/Bahia
 CJA,Cajamarca,America/Lima
-HUU,Hu?nuco,America/Lima
+HUU,Hunuco,America/Lima
 NZC,Nazca,America/Lima
 SRA,Santa Rosa,America/Sao_Paulo
 MYC,Maracay,America/Caracas
-VIG,El Vig?a,America/Caracas
-JPR,Ji-Paran?,America/Porto_Velho
+VIG,El Viga,America/Caracas
+JPR,Ji-Paran,America/Porto_Velho
 BBQ,Codrington,America/Antigua
 DSD,Grande Anse,America/Guadeloupe
 BBR,Basse Terre,America/Guadeloupe
-SFC,St-Fran?ois,America/Guadeloupe
+SFC,St-Franois,America/Guadeloupe
 GBJ,Grand Bourg,America/Guadeloupe
 NEV,Charlestown,America/St_Kitts
 VIJ,Spanish Town,America/Tortola
@@ -4500,7 +4500,7 @@ AOE,Eskissehir,Europe/Istanbul
 CKZ,Canakkale,Europe/Istanbul
 MSR,Mus,Europe/Istanbul
 NOP,Sinop,Europe/Istanbul
-TEQ,?orlu,Europe/Istanbul
+TEQ,orlu,Europe/Istanbul
 YEI,Yenisehir,Europe/Istanbul
 LSS,Les Saintes,America/Guadeloupe
 KMV,Kalemyo,Asia/Yangon
@@ -5698,7 +5698,7 @@ YAL,Alert Bay,America/Vancouver
 YCE,Centralia,America/Toronto
 YCQ,Chetwynd,America/Dawson_Creek
 XRR,Ross River,America/Whitehorse
-YDO,Dolbeau-St-F?licien,America/Toronto
+YDO,Dolbeau-St-Flicien,America/Toronto
 YEY,Amos,America/Toronto
 YHE,Hope,America/Vancouver
 YHT,Haines Junction,America/Whitehorse
@@ -5729,7 +5729,7 @@ ZST,Stewart,America/Vancouver
 ZUC,Ignace,America/Winnipeg
 FNB,Neubrandenburg,Europe/Berlin
 FSS,Kinloss,Europe/London
-BXP,Bia?a Podlaska,Europe/Warsaw
+BXP,Biaa Podlaska,Europe/Warsaw
 DGP,Daugavpils,Europe/Riga
 LMR,Lime Acres,Africa/Johannesburg
 SXN,Sowa,Africa/Gaborone
@@ -5784,17 +5784,17 @@ WMC,Winnemucca,America/Los_Angeles
 WWR,Woodward,America/Chicago
 ZZV,Zanesville,America/New_York
 ECV,Madrid,Europe/Madrid
-CDT,Castell?n de la Plana,Europe/Madrid
+CDT,Castelln de la Plana,Europe/Madrid
 TEV,Teruel,Europe/Madrid
 QLP,Sarzana (SP),Europe/Rome
 BJY,Batajnica,Europe/Belgrade
 RUV,Rubelsanto,America/Guatemala
 XPL,Comayagua,America/Tegucigalpa
 UPL,Upala,America/Costa_Rica
-QSN,San Nicol?s,America/Havana
+QSN,San Nicols,America/Havana
 SNJ,Pinar Del Rio,America/Havana
-DWD,,Asia/Riyadh
-KMX,,Asia/Riyadh
+DWD,Dawadmi Domestic Airport,Asia/Riyadh
+KMX,Khamis Mushait,Asia/Riyadh
 XXN,Riyadh,Asia/Riyadh
 KNR,Kangan,Asia/Tehran
 PYK,Karaj,Asia/Tehran
@@ -5807,75 +5807,75 @@ WWA,Wasilla,America/Anchorage
 IWK,Iwakuni,Asia/Tokyo
 IEJ,Ie,Asia/Tokyo
 AAV,Surallah,Asia/Manila
-BPH,,Asia/Manila
-MXI,,Asia/Manila
+BPH,Bislig,Asia/Manila
+MXI,Mexico City,Asia/Manila
 BAT,Barretos,America/Sao_Paulo
-QHP,Taubat?,America/Sao_Paulo
+QHP,Taubat,America/Sao_Paulo
 TOQ,Tocopilla,America/Santiago
-CNR,Cha?aral,America/Santiago
+CNR,Chaaral,America/Santiago
 TLX,Talca,America/Santiago
 ZIC,Victoria,America/Santiago
 TTC,Taltal,America/Santiago
 API,Apiay,America/Bogota
-CVE,Cove?as,America/Bogota
+CVE,Coveas,America/Bogota
 PAL,La Dorada,America/Bogota
 PZA,Paz De Ariporo,America/Bogota
 TQS,Tres Esquinas,America/Bogota
 RIJ,Rioja,America/Lima
-JAE,Ja?n,America/Lima
+JAE,Jaen,America/Lima
 IKU,Tamchy,Asia/Bishkek
 VYI,Vilyuisk,Asia/Yakutsk
-BGN,,Asia/Srednekolymsk
+BGN,Borovikovo,Asia/Srednekolymsk
 GVN,Sovetskaya Gavan,Asia/Vladivostok
 NLI,Nikolayevsk-na-Amure Airport,Asia/Vladivostok
-VLK,,Europe/Moscow
+VLK,Volgograd,Europe/Moscow
 INA,Inta,Europe/Moscow
 ZIX,Zhigansk,Asia/Yakutsk
-RTC,,Asia/Kolkata
+RTC,Raipur,Asia/Kolkata
 HIM,Polonnaruwa Town,Asia/Colombo
 RDP,Durgapur,Asia/Kolkata
 PUT,Puttaparthi,Asia/Kolkata
 LNX,Smolensk,Europe/Moscow
 ABH,Alpha,Australia/Brisbane
-ARY,,Australia/Melbourne
-BLN,,Australia/Melbourne
-BZD,,Australia/Sydney
-BWQ,,Australia/Sydney
-CVC,,Australia/Adelaide
-CWW,,Australia/Sydney
-CYG,,Australia/Melbourne
-CMD,,Australia/Sydney
-DRN,,Australia/Brisbane
+ARY,Albury,Australia/Melbourne
+BLN,Ballarat,Australia/Melbourne
+BZD,Bathurst,Australia/Sydney
+BWQ,Bowen,Australia/Sydney
+CVC,Currie,Australia/Adelaide
+CWW,Camwood,Australia/Sydney
+CYG,Cyclone,Australia/Melbourne
+CMD,Commander,Australia/Sydney
+DRN,Dirranbandi,Australia/Brisbane
 DNQ,Deniliquin,Australia/Sydney
-DYA,,Australia/Brisbane
-ECH,,Australia/Melbourne
+DYA,Dyarrah,Australia/Brisbane
+ECH,East Kimberley,Australia/Melbourne
 FRB,Forbes,Australia/Sydney
-GUH,,Australia/Sydney
-HXX,,Australia/Sydney
-HTU,,Australia/Melbourne
-KRA,,Australia/Melbourne
-KPS,,Australia/Sydney
-KGY,,Australia/Brisbane
+GUH,Guichen,Australia/Sydney
+HXX,Horsham,Australia/Sydney
+HTU,Victoria,Australia/Melbourne
+KRA,Karumba,Australia/Melbourne
+KPS,Kempsey,Australia/Sydney
+KGY,King George Island,Australia/Brisbane
 TGN,Morwell,Australia/Melbourne
-MRG,,Australia/Brisbane
-RPM,,Australia/Darwin
-QRM,,Australia/Sydney
-PPI,,Australia/Adelaide
-SIO,,Australia/Hobart
-SNB,,Australia/Darwin
-SWC,,Australia/Melbourne
-TYB,,Australia/Sydney
-TUM,,Australia/Sydney
-WGT,,Australia/Melbourne
-WKB,,Australia/Melbourne
-QRR,,Australia/Sydney
+MRG,Marlborough,Australia/Brisbane
+RPM,Roper River,Australia/Darwin
+QRM,New South Wales,Australia/Sydney
+PPI,Penrith,Australia/Adelaide
+SIO,Smithton,Australia/Hobart
+SNB,Milikapiti,Australia/Darwin
+SWC,Stawell,Australia/Melbourne
+TYB,Tyler,Australia/Sydney
+TUM,Tumut,Australia/Sydney
+WGT,Westport,Australia/Melbourne
+WKB,Warracknabeal,Australia/Melbourne
+QRR,Warren,Australia/Sydney
 SXE,Sale,Australia/Melbourne
 WWY,West Wyalong,Australia/Sydney
-NGA,,Australia/Sydney
+NGA,Young,Australia/Sydney
 LHK,Guanghua,Asia/Shanghai
 WDS,Shiyan,Asia/Shanghai
 HTT,Mengnai,Asia/Shanghai
-UUN,,Asia/Ulaanbaatar
+UUN,Ratchakrut,Asia/Ulaanbaatar
 BFU,Bengbu,Asia/Shanghai
 RUG,Rugao,Asia/Shanghai
 WHU,Wuhu,Asia/Shanghai
@@ -6063,8 +6063,8 @@ CQS,COSTA MARQUES,America/Porto_Velho
 ZXT,Baku,Asia/Baku
 JAM,Yambol,Europe/Sofia
 YUA,Yuanmou,Asia/Shanghai
-XEN,,Asia/Shanghai
-GEC,Ge?itkale,Asia/Famagusta
+XEN,Huludao,Asia/Shanghai
+GEC,Geitkale,Asia/Famagusta
 MBI,Mbeya,Africa/Dar_es_Salaam
 UGU,Sugapa-Papua Island,Asia/Jayapura
 ETM,Eilat,Asia/Jerusalem

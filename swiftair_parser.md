@@ -1,3 +1,39 @@
+# Importador Webcal de Swiftair
+
+## Objetivo
+Sincronizar de forma segura e idempotente la programación de Swiftair desde un Webcal privado.
+
+## Fuente
+Aceptar `webcal://` y `https://`, convertir internamente cuando proceda y validar esquema, longitud y host. Bloquear destinos privados, loopback, metadata cloud y redirecciones inseguras para mitigar SSRF.
+
+## Almacenamiento
+Guardar la URL únicamente en almacenamiento privado accesible por servicio. No incluirla en respuestas, logs, analítica ni errores. RLS no sustituye el aislamiento del secreto en servidor.
+
+## Sincronización
+- Ejecutar en servidor mediante planificador y lotes.
+- Objetivo de frescura: cambios visibles normalmente en menos de cinco minutos.
+- Timeout, reintentos exponenciales con jitter, límite de concurrencia y circuit breaker.
+- Usar ETag/Last-Modified cuando el servidor lo admita.
+- Registrar fecha, duración, estado, número de cambios y error saneado.
+- Evitar una invocación externa por usuario cada minuto.
+
+## Normalización
+Usar UID del calendario como `source_uid`. Si falta, crear huella determinista. Conservar zona horaria y convertir a instantes UTC. Procesar recurrencias con ventana acotada. Interpretar códigos mediante `swiftair_codes.csv`. Un DH es vuelo posicional y se representa como tal.
+
+## Reconciliación
+Actualizar eventos futuros desde el instante actual. No borrar históricos. Si un evento futuro desaparece de la fuente, eliminarlo. La operación debe ser idempotente.
+
+## Restricciones
+Los eventos Swiftair importados no se editan ni eliminan manualmente. Las actividades manuales independientes sí se permiten.
+
+## Criterios de aceptación
+- La URL nunca es visible para amigos ni clientes posteriores al alta.
+- Una sincronización repetida no duplica eventos.
+- Una caída externa no borra datos existentes.
+- Se manejan DST, eventos de varios días, cancelaciones y UID modificado.
+- Las pruebas incluyen SSRF y acceso cruzado.
+
+
 Aquí defino el parser de los contenidos provenientes del enlace webcal de Swiftair:
 
 ## Introducción:

@@ -1,38 +1,39 @@
-# Español
+# Instrucciones de importación
 
-Instrucciones para Iberia:
+## Español
+### Iberia
+1. Accede a `ibnet.iberia.es`.
+2. Abre **Programación** y después **Outlook**.
+3. Descarga el archivo del mes.
+4. Vuelve a LaProgra y selecciónalo.
 
-- Ve a ibnet.iberia.es abre Programación y luego Outlook
-- Descarga el archivo del mes y subelo aquí
+El archivo se procesa en tu dispositivo. El original no se sube a LaProgra. Revisa la previsualización antes de confirmar.
 
-Instrucciones para Swiftair (solo Apple):
+### Swiftair, dispositivos Apple
+1. Instala y configura **Calendar** y **eCrew** en el iPhone o iPad.
+2. En Calendar, crea un calendario exclusivo, por ejemplo, `Swiftair`.
+3. En eCrew, abre **Settings > Export to Calendar** y selecciona ese calendario.
+4. Activa **AutoSync**, desactiva **Combined flights**, guarda y pulsa **Upload to Calendar**.
+5. Comprueba que los eventos aparecen.
+6. Comparte únicamente ese calendario y copia el enlace de suscripción en LaProgra.
 
-- Necesitas tener instalada la app Calendar y eCrew en tu iPhone o iPad. 
-- Con el móvil o el ordenador ve a Calendar y crea un calendario nuevo (llamado `Swiftair`, por ejemplo).
-- En eCrew ve a Settings, Export to Calendar. Selecciona el calendario que acabas de crear.
-- Enciende AutoSync y apaga Combined flights.
-- Guarda la configuración y pulsa Upload to Calendar.
+El enlace da acceso a tu programación. No lo publiques ni reutilices un calendario personal. Puedes revocarlo dejando de compartir el calendario.
 
-En unos instantes verás tus eventos en Calendar, ahora:
-- Ve a las opciones del calendario en Calendar y selecciona compartir
-- Copia el enlace que te da y pegalo aquí.
+## English
+### Iberia
+1. Sign in to `ibnet.iberia.es`.
+2. Open **Programación**, then **Outlook**.
+3. Download the file for the relevant month.
+4. Return to LaProgra and select it.
 
-# Inglés
+The file is processed on your device. The original is not uploaded to LaProgra. Review the preview before confirming.
 
-Iberia:
+### Swiftair, Apple devices
+1. Install and configure **Calendar** and **eCrew** on your iPhone or iPad.
+2. Create a dedicated calendar, for example `Swiftair`.
+3. In eCrew, open **Settings > Export to Calendar** and select it.
+4. Turn **AutoSync** on, **Combined flights** off, save, and tap **Upload to Calendar**.
+5. Check that the events appear.
+6. Share only that calendar and paste its subscription link into LaProgra.
 
-- Go to ibnet.iberia.es open Programación and then Outlook
-- Download the file of this month and upload it here
-
-Swiftair (Apple only)
-
-- You need to have eCrew and Calendar app installed on your iPhone or iPad.
-- With any device go to Calendar and create a new calendar (name it as you like, for instance `Swiftair`).
-- On your iPhone/iPad open eCrew go to Settings, Export to Calendar. Choose the calendar you just created. 
-- Switch ON AutoSync and OFF Combined flights. 
-- Save and press Upload to Calendar.
-
-Wait a few seconds/minutes and check the events were imported to your Calendar app, then:
-- Go to the Calendar app settings and share the calendar you created.
-- Copy the link and paste it here.
-
+The link provides access to your roster. Do not publish it or use a personal calendar. You can revoke access by stopping calendar sharing.

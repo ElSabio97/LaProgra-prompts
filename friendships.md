@@ -1,22 +1,26 @@
-Respondo a unas preguntas que me hiciste:
+# Amistades
 
-- ¿Las solicitudes se envían buscando por nombre de usuario, correo electrónico o ambos?
-Se envían buscando nombre de usuario.
+## Reglas
+- Las solicitudes se envían por nombre de usuario normalizado.
+- El nombre de usuario es único sin distinguir mayúsculas y minúsculas.
+- Una amistad aceptada es recíproca.
+- No hay bloqueo en la primera versión.
+- Eliminar una amistad rompe la relación para ambos.
+- No existe límite funcional inicial, aunque se aplicará rate limiting contra abuso.
+- El color de una amistad es una preferencia privada y local de cada usuario.
+- Una amistad puede ocultarse temporalmente sin eliminarla.
 
-- ¿El nombre de usuario debe ser único?
-Sí, el nombre de usuario debe ser único
+## Estados
+`pending`, `accepted`, `declined` y `cancelled`. Solo el destinatario acepta o rechaza; solo el remitente cancela una solicitud pendiente; cualquiera elimina una amistad aceptada.
 
-- ¿La amistad es siempre recíproca?
-Sí.
+## Privacidad
+La búsqueda devuelve solo datos mínimos. No permite enumerar usuarios masivamente. Una amistad puede ver únicamente eventos compartidos, nunca correo, Webcal, CSV, configuración privada ni registros de importación.
 
-- ¿Se puede bloquear a otro usuario?
-No. Pero sí que puedes borrarlo de tu lista de amigos. Esto provoca que tú ya no veas su programación ni que él tampoco vea la tuya.
+## Integridad
+Evitar solicitudes a uno mismo, duplicadas o cruzadas. Una solicitud inversa pendiente puede convertirse de forma transaccional en amistad aceptada. Usar restricciones únicas y operaciones atómicas.
 
-- ¿Existe un límite de amigos?
-No.
-
-- ¿El color de cada amigo lo elige localmente cada usuario y solo afecta a su propia vista?
-Sí.
-
-- ¿Se pueden ocultar temporalmente los eventos de un amigo sin borrarlo?
-Sí.
+## Criterios de aceptación
+- Dos usuarios ven el mismo estado de amistad.
+- El borrado elimina el acceso inmediatamente en ambos sentidos.
+- Ocultar o cambiar color solo afecta al usuario que cambia la preferencia.
+- RLS impide consultar relaciones ajenas.

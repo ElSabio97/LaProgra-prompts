@@ -1,3 +1,46 @@
+# Importador de Iberia
+
+## Objetivo
+Convertir en el navegador el CSV mensual de Iberia a eventos normalizados sin subir el archivo original ni campos personales innecesarios.
+
+## Entrada
+- Archivo CSV UTF-8 o codificación detectada de forma segura.
+- Tamaño máximo configurable, inicialmente 10 MB.
+- Cabeceras esperadas documentadas mediante fixtures anonimizados.
+- Rechazar archivos vacíos, binarios, con estructura desconocida o filas desproporcionadas.
+
+## Privacidad
+El contenido completo se procesa localmente. Solo se enviarán eventos normalizados y metadatos técnicos mínimos. No registrar filas originales.
+
+## Proceso
+1. Validar nombre, tamaño, MIME orientativo y firma de contenido.
+2. Detectar delimitador y codificación entre las variantes admitidas.
+3. Normalizar cabeceras sin alterar los valores originales necesarios.
+4. Convertir fechas y horas usando la zona indicada o la base del usuario.
+5. Interpretar códigos mediante `iberia_codes.csv` sin traducir sus descripciones.
+6. Generar `source_uid`; si no existe uno fiable, generar una huella estable a partir de compañía, fecha operativa, código, origen, destino, inicio y fin normalizados.
+7. Mostrar previsualización y resumen de errores antes de enviar.
+8. Ejecutar upsert idempotente.
+
+## Reconciliación
+- El registro importado conserva los valores de origen.
+- Las ediciones del usuario se guardan en `event_overrides` por campo.
+- Las eliminaciones se guardan como tombstones.
+- En una reimportación, actualizar el origen, reaplicar overrides y respetar tombstones.
+- Si cambia la identidad de un evento de forma ambigua, marcar conflicto y no duplicar silenciosamente.
+
+## Errores
+Informar número de filas aceptadas, rechazadas y ambiguas. Permitir descargar un informe sin datos personales innecesarios.
+
+## Criterios de aceptación
+- El CSV original nunca sale del navegador.
+- Importar dos veces el mismo archivo no duplica eventos.
+- Una edición y una eliminación sobreviven a la siguiente importación.
+- Fechas alrededor de cambios DST se procesan de forma determinista.
+- Una fila inválida no invalida necesariamente todo el archivo.
+
+
+
 Aquí defino el parser de los contenidos provenientes del CSV de iberia:
 
 ## Introducción:

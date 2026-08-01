@@ -1,15 +1,28 @@
-Quiero que se permita escoger entre dos versiones de pdf.
+# Exportación PDF
 
-# A color
-- Debe tener el mismo color de slab que en el calendario
+## Versiones
+### Color
+Usa los colores del calendario, manteniendo contraste suficiente.
 
-# En blanco y negro
-- Optimizado para imprimir y poner en la nevera
-- No existen slabs, solo su texto
+### Blanco y negro
+Optimizada para impresión. No depende de fondos de color; utiliza texto, bordes, patrones o marcadores distinguibles.
 
-Ambas versiones deben priorizar la legibilidad para ello:
-- El nombre del mes y el usuario deben aparecer en la parte superior.
-- Deben tener un grid muy ancho y alto para permitir poner tantos slabs como quepan
-- No quiero desbordamiento ni `+3` para indicar que no caben más eventos en la celda, simplemente que "desaparezcan por debajo".
-- En lugar de solo sigla o ruta IATA-IATA debe aparecer eso mas el horario en formato hhmm-hhmm
-- Debe aparecer una leyenda debajo del grid con formato IATA - City
+## Contenido común
+- Formato A4 horizontal por defecto.
+- Nombre de usuario y mes en cabecera.
+- Semana desde lunes y zona horaria indicada.
+- Cada evento muestra sigla o ruta y horario `HHmm-HHmm`.
+- Leyenda inferior `IATA - Ciudad` solo para códigos presentes.
+- Tipografía incrustada y caracteres Unicode correctos.
+
+## Desbordamiento
+No utilizar `+3` ni recortar eventos silenciosamente. Aumentar altura cuando sea viable; si no cabe, continuar el día o el mes en una página adicional con referencia clara. La exportación debe indicar si hubo errores de renderizado.
+
+## Privacidad
+El PDF respeta los filtros de amistades visibles. No incluye correos, URLs Webcal, identificadores internos ni notas privadas no seleccionadas.
+
+## Criterios de aceptación
+- Ambas versiones contienen el mismo conjunto de eventos.
+- No hay texto cortado ni eventos omitidos.
+- La impresión en escala de grises sigue siendo interpretable.
+- Meses de cuatro, cinco y seis semanas se renderizan correctamente.
