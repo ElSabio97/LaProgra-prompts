@@ -1,111 +1,125 @@
 # Importador Webcal de Swiftair
 
-## Objetivo
-Sincronizar de forma segura e idempotente la programación de Swiftair desde un Webcal privado.
+## 1. Objetivo
 
-## Fuente
-Aceptar `webcal://` y `https://`, convertir internamente cuando proceda y validar esquema, longitud y host. Bloquear destinos privados, loopback, metadata cloud y redirecciones inseguras para mitigar SSRF.
+Sincronizar de forma segura, automática e idempotente la programación de Swiftair desde un Webcal privado generado mediante eCrew y un calendario dedicado.
 
-## Almacenamiento
-Guardar la URL únicamente en almacenamiento privado accesible por servicio. No incluirla en respuestas, logs, analítica ni errores. RLS no sustituye el aislamiento del secreto en servidor.
+## 2. Fuente, seguridad y almacenamiento
 
-## Sincronización
-- Ejecutar en servidor mediante planificador y lotes.
-- Objetivo de frescura: cambios visibles normalmente en menos de cinco minutos.
-- Timeout, reintentos exponenciales con jitter, límite de concurrencia y circuit breaker.
-- Usar ETag/Last-Modified cuando el servidor lo admita.
-- Registrar fecha, duración, estado, número de cambios y error saneado.
-- Evitar una invocación externa por usuario cada minuto.
+- Aceptar `webcal://` y `https://`; convertir internamente cuando proceda.
+- Validar esquema, longitud, host, puerto, destino resuelto y redirecciones.
+- Bloquear destinos privados, loopback, link-local, metadata cloud y redirecciones inseguras para mitigar SSRF.
+- Limitar tamaño, tiempo y número de redirecciones.
+- Guardar la URL solo en almacenamiento privado accesible por el servicio.
+- No devolverla al navegador después del alta ni incluirla en logs, analítica, trazas o errores.
+- Las amistades nunca pueden verla.
+- RLS es obligatoria, pero no sustituye el aislamiento del secreto en servidor.
 
-## Normalización
-Usar UID del calendario como `source_uid`. Si falta, crear huella determinista. Conservar zona horaria y convertir a instantes UTC. Procesar recurrencias con ventana acotada. Interpretar códigos mediante `swiftair_codes.csv`. Un DH es vuelo posicional y se representa como tal.
+## 3. Primera importación y sincronización
 
-## Reconciliación
-Actualizar eventos futuros desde el instante actual. No borrar históricos. Si un evento futuro desaparece de la fuente, eliminarlo. La operación debe ser idempotente.
+- Primera importación en servidor durante onboarding: mes en curso y meses posteriores.
+- Conservar históricos aunque eCrew deje de publicarlos.
+- Cron global de Supabase una vez por minuto, sin solicitar todas las fuentes cada minuto.
+- Seleccionar lotes de fuentes vencidas con control de concurrencia, leasing, timeout, backoff exponencial, jitter y circuit breaker.
+- Usar `ETag` y `Last-Modified` cuando estén disponibles.
+- Objetivo: cambios visibles normalmente en menos de cinco minutos.
+- Un fallo externo o resultado parcial no borra datos existentes.
 
-## Restricciones
-Los eventos Swiftair importados no se editan ni eliminan manualmente. Las actividades manuales independientes sí se permiten.
+## 4. Parseo iCalendar
 
-## Criterios de aceptación
-- La URL nunca es visible para amigos ni clientes posteriores al alta.
-- Una sincronización repetida no duplica eventos.
-- Una caída externa no borra datos existentes.
-- Se manejan DST, eventos de varios días, cancelaciones y UID modificado.
-- Las pruebas incluyen SSRF y acceso cruzado.
+Procesar `UID`, `DTSTART`, `DTEND`, `SUMMARY`, `LOCATION`, `DESCRIPTION`, `SEQUENCE`, `LAST-MODIFIED` y `DTSTAMP` cuando existan.
 
+- Conservar zona original y normalizar instantes a UTC.
+- Admitir `TZID`, UTC y `VALUE=DATE` con final exclusivo de iCalendar.
+- Admitir medianoche, varios días y recurrencias en ventana acotada.
+- Decodificar escapes y líneas plegadas.
+- Usar `UID` como `source_uid`; si falta, crear huella determinista.
 
-Aquí defino el parser de los contenidos provenientes del enlace webcal de Swiftair:
+## 5. Hora de firma
 
-## Introducción:
+- Extraer `Reporting time : HHMM` de `DESCRIPTION` cuando esté presente.
+- La hora está expresada en UTC.
+- Guardarla separada del inicio del evento.
+- Su ausencia no invalida el evento.
 
-Swiftair utiliza la app eCrew para publicar las programaciones de sus tripulantes. eCrew ofrece la posibilidad de exportar los eventos a un calendario del móvil como Google Calendar o Calendar de iOS. A su vez, Calendar de iOS permite exportar un enlace webcal para poder ver los eventos del calendario en cualquier otra aplicación de calendarios. Quiero aprovechar esa funcionalidad para poder importar los eventos de eCrew en LaProgra. Swiftair es una empresa con muchos cambios internos constantes y las programaciones de sus empleados sufren cambios constantemente. Swiftair re-publica la programación de vez en cuando en eCrew y sus eventos se exportan al calendario que elija el usuario (Calendar de iOS de ahora en adelante). Muchas veces los eventos pasados se borran en esa actualización que publica Swiftair. 
+## 6. Clasificación de SUMMARY
 
-## Requisitos previos:
+Aplicar este orden:
 
-- Se permite guardar el enlace Webcal en Supabase para sincronizaciones posteriores.
-- Se impide que los usuarios puedan ver el enlace webcal de sus amigos en la consola para desarrolladores del navegador
-- Los eventos de Swiftair deben sincronizarse automáticamente. Para ello hay que dar de alta un CRON JOB y una edge function de Supabase que actualice una vez por minuto los eventos futuros provenientes del enlace webcal.
-- Cuando el usuario introduce el enlace webcal por primera vez en el onboarding deben parsearse todos los eventos provenientes del mes en curso y en adelante.
+1. Coincidencia exacta con `ID` de `swiftair_codes.csv`.
+2. Transporte terrestre `GRD`.
+3. Número de vuelo y ruta.
+4. Actividad desconocida.
 
-A continuación muestro un ejemplo del contenido del descargable del enlace webcal:
-```
-BEGIN:VEVENT
-CREATED:20260303T225949Z
-DESCRIPTION:Reporting time : 2100\n4646  - HAJ  (A2141) - LGG  (E2254)\n*
-  All times in UTC\n\n--- Created by the AIMS eCrew app ---
-DTEND;TZID=Europe/Brussels:20260303T235200
-DTSTAMP:20260303T225951Z
-DTSTART;TZID=Europe/Brussels:20260303T220000
-LAST-MODIFIED:20260303T225949Z
-LOCATION:(2145Z-2252Z) HAJ
-SEQUENCE:0
-SUMMARY:4646  HAJ-LGG
-UID:012B6285-F07B-4810-9239-E0E09D9A1020
-X-APPLE-CREATOR-IDENTITY:aero.aims.eCrew
-X-APPLE-CREATOR-TEAM-IDENTITY:CRVQTJ2BFS
-END:VEVENT
-```
+La columna `ID` del catálogo debe ser única. Las pruebas o el despliegue deben fallar ante duplicados.
 
-- Del campo DTSTART podemos extraer el uso horario (TZID) y la fecha y hora de comienzo del evento
-- Del campo DTEND lo mismo pero para el final del evento.
-- Del campo SUMMARY podemos extraer código de actividad o el número de vuelo y la ruta.
-- Del campo LOCATION podemos extraer los horarios en UTC del vuelo. 
-- Del campo DESCRIPTION podemos extraer la hora de "firma" gracias a que pone "Reporting time: 2100" y está en UTC.
-- Siempre que aparezca ese "Reporting time" en el campo DESCRIPTION aparecerá la hora de firma en al descripción del evento.
+### 6.1 Actividad de catálogo
 
-El contenido del slab y de la descripción del evento provienen de buscar un match entre el campo SUMMARY y la columna ID de `swiftairCodes.txt`.
+- Slab: código identificado.
+- Descripción: `DESCRIPTION` literal.
+- Códigos y descripciones no se traducen.
 
-Aquí tienes un ejemplo de un evento webcal asociado a un ID de `swiftairCodes.txt`:
+### 6.2 Vuelos
 
-```
-BEGIN:VEVENT
-CREATED:20260725T103900Z
-DESCRIPTION:Leave / Vacaciones                      - V   \nFull day\nLoc
- ation: LIS\n* All times in UTC\n\n--- Inserted by the AIMS eCrew app ---
- 
-DTEND;VALUE=DATE:20261018
-DTSTAMP:20260725T103901Z
-DTSTART;VALUE=DATE:20261017
-LAST-MODIFIED:20260725T103900Z
-LOCATION:LIS 
-SEQUENCE:0
-SUMMARY:V    Leave / Vacaciones                      
-UID:1795C28E-DDA5-43E6-B292-672D4B677C03
-X-APPLE-CREATOR-IDENTITY:aero.aims.eCrew
-X-APPLE-CREATOR-TEAM-IDENTITY:CRVQTJ2BFS
-END:VEVENT
-```
-### Flujo de detección de eventos
-1. Comprobar el campo SUMMARY y distinguir entre vuelos y todo lo demás. 
-    Para ello comprobar si las letras de la primera palabra contienen numeros. Eso es el indicativo de que el evento es un vuelo puesto que ningún ID de `swiftairCodes.txt` contiene números. Ej de vuelos. `SUMMARY:4646  HAJ-LGG` o `SUMMARY:GRD1319  DUS-CGN` o `SUMMARY:IB539  MAD-LIS`
-    Tener en consideración que puede haber errores tipograficos como que aparezca un punto o un espacio entre las letras y los números.
-2. Si no cumple la lógica de ser vuelo, buscar un match contra los ID de `swiftairCodes.txt`. 
+Formatos equivalentes:
 
-3. Si no es un vuelo pero tampoco hay match entonces pondremos lo que diga el campo SUMMARY tal cual.
-    En el slab pondremos lo que diga SUMMARY antes del primer espacio y en la descripción del evento pondremos lo que haya después del espacio.
+- `4646 HAJ-LGG`.
+- `721P MAD-BCN`.
+- `IB539 MAD-LIS`.
+- `AEA1145 MAD-PMI`.
 
-### Nota: 
-- Aquellos números de vuelo que solo tengan numeros o numeros y después una o varias letras tendrán que ser complementados por las letras `WT`. Por ejemplo. `SUMMARY:4646  HAJ-LGG` el número de vuelo será `WT4646` o `SUMMARY:721P MAD-BCN` el número de vuelo será `WT721P`
-- Si el numero de vuelo detectado es de tipo ICAO (tres letras, ej. AEA1145) habrá que traducirlo a IATA buscando el prefijo ICAO y cambiandolo por su equivalente IATA. Para eso hay que usar las columnas ICAO e IATA del archivo `airlines.txt`
-- El número de vuelo sirve para poder determinar si el vuelo es en situación (deadhead) o es operado por el tripulante. Por ello quiero que exista un array o similar de codigos IATA hardcodeado en el codigo para determinar aquellos operados por los tripulantes de Swiftair ya que operan vuelos para diferentes compañias. De momento serán `OPERATED_FLIGHTS=['WT','QY']` todos los demás IATA serán vuelos en situación (deadhead).
-- Hay veces que los tripulantes de Swiftair son situados (deadhead) por carretera. Esos "números de vuelo" serán aquellos que contengan las letras `GRD`. Por ejemplo: `SUMMARY:GRD1319  DUS-CGN`. En este caso la descripción del evento será `En coche`/`Ground transport`. 
+Reglas:
+
+- Extraer ruta como dos IATA de tres letras.
+- Tolerar únicamente variantes de separación expresamente probadas, como espacio o punto entre prefijo y números.
+- Si el identificador contiene solo números, o números seguidos de letras, añadir `WT`: `4646` -> `WT4646`; `721P` -> `WT721P`.
+- Si usa prefijo ICAO de tres letras, convertirlo a IATA mediante `airlines.csv` en dirección `ICAO -> IATA`.
+- Conservar identificador original y número normalizado.
+
+### 6.3 Operado y deadhead
+
+- Prefijos operados inicialmente: `WT` y `QY`.
+- Todo otro prefijo IATA se clasifica como vuelo en situación/deadhead.
+- Para deadhead, consultar `airlines.csv` por IATA y obtener el nombre.
+- Español: `Vuelo en situación {aerolínea} {número}`.
+- Inglés: `Deadhead flight on {aerolínea} {número}`.
+- Ejemplo: `FR2344` -> `Vuelo en situación Ryanair FR2344` / `Deadhead flight on Ryanair FR2344`.
+- Si no existe el IATA, conservar código y número, usar el código como nombre provisional y generar advertencia no bloqueante.
+- La lista de operados debe ser configuración versionada del módulo Swiftair y estar probada.
+
+### 6.4 Transporte terrestre
+
+- Prefijo `GRD`, por ejemplo `GRD1319 DUS-CGN`.
+- No es vuelo operado ni deadhead aéreo.
+- Español: `En coche`.
+- Inglés: `Ground transport`.
+- Conservar la ruta si puede extraerse.
+
+### 6.5 Desconocido
+
+- Slab: texto anterior al primer espacio.
+- Descripción: texto posterior.
+- Si no hay espacio, usar todo como slab y descripción vacía.
+- Conservar `SUMMARY` original y generar advertencia no bloqueante.
+
+## 7. Reconciliación
+
+- Actualizar eventos futuros desde el instante actual.
+- No borrar históricos.
+- Si un evento futuro desaparece de una descarga válida y completa, eliminarlo.
+- Si la descarga falla o es parcial, no eliminar por ausencia.
+- La operación es idempotente.
+- Los eventos importados de Swiftair no se editan ni eliminan manualmente.
+- Las actividades manuales independientes sí están permitidas.
+- Un UID modificado debe reconciliarse explícitamente y no producir duplicados silenciosos.
+
+## 8. Criterios de aceptación
+
+- La URL no es visible para clientes posteriores al alta ni amistades.
+- SSRF y acceso cruzado están probados.
+- Una sincronización repetida no duplica.
+- Un fallo no borra datos.
+- Se manejan DST, varios días, `VALUE=DATE`, cancelaciones y recurrencias acotadas.
+- Los IDs de `swiftair_codes.csv` son únicos.
+- `WT` y `QY` son operados; los demás son deadhead salvo `GRD`.
+- Los deadhead resuelven la aerolínea mediante `airlines.csv` y generan la descripción bilingüe definida.

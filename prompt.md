@@ -52,7 +52,10 @@ Entidades: `profiles`, `events`, `friendships`, `friend_preferences`, `import_so
 
 Cada evento importado tendrá `owner_id`, `airline`, `starts_at`, `ends_at`, zona horaria original, datos normalizados.
 
-Las ediciones de eventos importados sustituirán al evento guardado. Las eliminaciones borrarán el evento en cuestión. Una reimportación no debe reactivar un evento eliminado ni sobrescribir un campo modificado sin aplicar la política de reconciliación.
+Los valores importados se conservan como datos de origen. La política depende de la fuente:
+- Swiftair: los eventos importados no pueden editarse ni eliminarse manualmente por el usuario; la sincronización automática actualiza y elimina eventos futuros conforme a swiftair_parser.md.
+- Iberia: Iberia no proporciona un CSV actualizado cuando cambia o cancela posteriormente un evento. El propietario refleja esos cambios manualmente: las ediciones se guardan como overrides por campo y las eliminaciones como tombstones. Una reimportación idéntica no duplica eventos, no sobrescribe overrides y no reactiva tombstones. No se intentará deducir por proximidad horaria que un evento distinto es una actualización.
+- Actividades manuales: son eventos independientes y permiten creación, edición y eliminación por su propietario.
 
 ## 8. Seguridad y privacidad
 - Supabase Auth para correo y contraseña. También permitir acceso con Google.
@@ -86,7 +89,7 @@ Webcal privado. Primera importación y posteriores sincronizaciones en servidor.
 Los eventos pasados se conservan. Los importados no se editan ni eliminan manualmente, salvo correcciones administrativas documentadas.
 
 ### Iberia
-CSV procesado y anonimizado en navegador. Usar `source_uid` o una huella determinista. La reconciliación preservará overrides y tombstones. Los eventos importados podrán ajustarse mediante overrides sin mutar el registro de origen.
+CSV procesado y anonimizado en navegador. Usar `source_uid` o una huella determinista para garantizar idempotencia. Iberia no proporciona un nuevo CSV cuando cambia horarios o cancela eventos ya publicados. El propietario editará manualmente esos cambios, almacenados como overrides por campo, y eliminará manualmente las cancelaciones, almacenadas como tombstones. Una reimportación idéntica preservará overrides y tombstones y no duplicará eventos. No se intentará inferir actualizaciones mediante proximidad temporal.
 
 ### Cambio de aerolínea
 Requiere confirmación explícita. Elimina fuentes y eventos de la compañía anterior, incluidos overrides relacionados, pero conserva perfil, amistades y preferencias. Registrar la operación.
@@ -104,7 +107,7 @@ La exportación PDF es una excepción: se rige por `download_pdf.md` y puede pag
 ## 13. Amistades
 Amistad recíproca, solicitud por username normalizado, sin límite de producto inicial. Borrar rompe la relación en ambos sentidos. Cada usuario puede asignar color y ocultar temporalmente a una amistad sin afectarla.
 
-Los amigos solo ven los datos de calendario expresamente compartidos, nunca fuentes, enlaces, importaciones, correo ni datos internos.
+Las amistades autorizadas pueden ver todos los campos funcionales de los eventos compartidos, pero nunca pueden editarlos. La visibilidad de una actividad manual puede excluir amistades concretas. Las amistades nunca ven fuentes, enlaces Webcal, archivos CSV, correo, configuración privada, registros de importación, identificadores internos ni datos técnicos.
 
 ## 14. Actividades manuales
 Aplicar `new_event.md`. Solo propietario puede crear, editar y eliminar. Validar intervalo, zona horaria y solapamientos según reglas del documento especializado.
