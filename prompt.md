@@ -23,6 +23,8 @@ Construye **LaProgra**, una PWA para que pilotos y TCP importen, visualicen y co
 
 Los CSV se guardarán en UTF-8, con cabecera, coma como delimitador y campos entre comillas cuando sea necesario. `Timezone` será una zona IANA válida.
 
+Cuando una consulta a un catálogo produzca varias coincidencias válidas, se usará siempre la primera fila según el orden original del CSV, sin reordenar previamente el catálogo.
+
 ## 4. Glosario
 - **Programación o progra:** eventos laborales mensuales.
 - **Compañía:** aerolínea empleadora.
@@ -33,7 +35,6 @@ Los CSV se guardarán en UTF-8, con cabecera, coma como delimitador y campos ent
 - **Slab:** bloque visual de un evento.
 - **Actividad manual:** evento creado por el usuario.
 - **Línea o pairing:** sucesión relacionada de vuelos.
-- **DH:** vuelo posicional en el que el tripulante viaja como pasajero, no como piloto.
 
 ## 5. Alcance de la primera versión
 Incluye autenticación, onboarding, Iberia, Swiftair, calendario mensual, actividades manuales, amistades, español e inglés, configuración y PDF. Quedan fuera pagos, mensajería, bloqueo de usuarios y otras aerolíneas.

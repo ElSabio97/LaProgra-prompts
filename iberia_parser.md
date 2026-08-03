@@ -16,6 +16,7 @@ Iberia no proporciona un nuevo CSV cuando modifica o cancela posteriormente un v
   - `Fecha de finalización`
   - `Finalización`
 - El resto de columnas puede contener datos personales y debe descartarse inmediatamente. No se incluirá en eventos normalizados, previsualizaciones técnicas, telemetría, logs, informes de error ni peticiones de red.
+- La columna `Todo el día` no se utiliza, aunque exista en el CSV. Se descarta como cualquier otra columna no autorizada y no altera la semántica temporal del evento.
 - Tras el análisis se descartarán el archivo original, las filas originales y cualquier buffer que contenga columnas no autorizadas.
 - Solo se enviarán al servidor eventos normalizados y metadatos técnicos mínimos.
 
@@ -98,15 +99,13 @@ Extraer como mínimo:
 
 - número de vuelo;
 - origen IATA;
-- hora informativa de salida incluida en `Asunto`;
 - destino IATA;
-- hora informativa de llegada incluida en `Asunto`;
-- texto adicional opcional.
 
 Reglas:
 
-- Las columnas de comienzo y finalización son la fuente temporal del evento normalizado.
-- Los horarios incluidos en `Asunto` se conservan como datos interpretados o comprobación cruzada, pero no sustituyen las columnas temporales.
+- La fecha y hora de inicio se obtienen exclusivamente de `Fecha de comienzo` + `Comienzo`.
+- La fecha y hora de finalización se obtienen exclusivamente de `Fecha de finalización` + `Finalización`.
+- Las horas incluidas dentro de `Asunto` no se extraen, almacenan, convierten, comparan ni validan. Solo pueden formar parte de la estructura textual necesaria para reconocer el formato y localizar el número de vuelo, el origen y el destino.
 - Consultar `airports.csv` para obtener las ciudades de origen y destino.
 - La descripción incluirá las ciudades con el formato `Madrid - Barcelona` cuando ambos IATA estén presentes.
 - Si un aeropuerto no existe en el catálogo, conservar el IATA y generar una advertencia no bloqueante.
@@ -119,6 +118,7 @@ La clasificación se determina por el prefijo del número de vuelo:
 - `IB`: vuelo operado por el tripulante para Iberia.
 - `VS`: código interno de Iberia que indica un vuelo en situación o deadhead realizado en Iberia. `VS` no se busca en `airlines.csv` ni en `iberia_codes.csv`. Para presentación se sustituye por `IB`, conservando la parte numérica.
 - Cualquier otro prefijo IATA: vuelo en situación o deadhead realizado en otra aerolínea. Resolver el nombre mediante búsqueda por `IATA` en `airlines.csv`.
+- Si la búsqueda por IATA devuelve varias filas, utilizar siempre la primera coincidencia según el orden original de `airlines.csv`.
 
 Descripción del deadhead:
 
@@ -201,4 +201,5 @@ Los mensajes serán accionables y no incluirán columnas descartadas ni datos pe
 - Una eliminación manual sobrevive a una reimportación idéntica.
 - No se intenta detectar actualizaciones posteriores de Iberia mediante tolerancias horarias.
 - Las fechas alrededor de DST se procesan de forma determinista.
+- Los horarios incluidos en `Asunto` no se usan para determinar, comprobar ni enriquecer los horarios del evento.
 - Una fila inválida no invalida necesariamente todo el archivo.

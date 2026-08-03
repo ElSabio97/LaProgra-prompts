@@ -81,6 +81,7 @@ Reglas:
 - Prefijos operados inicialmente: `WT` y `QY`.
 - Todo otro prefijo IATA se clasifica como vuelo en situación/deadhead.
 - Para deadhead, consultar `airlines.csv` por IATA y obtener el nombre.
+- Si la búsqueda por IATA devuelve varias filas, utilizar siempre la primera coincidencia según el orden original de `airlines.csv`.
 - Español: `Vuelo en situación {aerolínea} {número}`.
 - Inglés: `Deadhead flight on {aerolínea} {número}`.
 - Ejemplo: `FR2344` -> `Vuelo en situación Ryanair FR2344` / `Deadhead flight on Ryanair FR2344`.
