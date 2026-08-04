@@ -1,0 +1,509 @@
+"Asunto","Fecha de comienzo","Comienzo","Fecha de finalización","Finalización","Todo el día","Reminder on/off","Reminder Date","Reminder Time","Meeting Organizer","Required Attendees","Optional Attendees","Recursos de la reunión","Billing Information","Categories","Description","Location","Mileage","Priority","Private","Sensitivity","Show time as"
+"Firma 06:00 Pairing 3372","01/08/2026","06:00","01/08/2026","07:00","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB711  MAD0500-LHR0725 / 320 ","01/08/2026","07:00","01/08/2026","09:25","Falso","Verdadero","31/07/2026","18:00",,,,,,,"
+TECNICOS
+--------
+CT->E  229611 PACIENCIA BAÑARES             , JOSE DANIEL
+TCP
+---
+SC   976559 SOTO LLORCA                   ,AROA
+TP   019099 SANCHEZ MOYA                  ,ANDREA
+TP   020619 PANTA BRICEÑO                 ,ANDREA ALESSIA
+TP   398263 BRAVO VELASCO                 ,CRISTINA
+TP   029884 ABOU AL LAL ZERRAD            ,SAMIR
+---
+","",,"Normal","Falso","Normal","2"
+"IB712  LHR0815-MAD1040 / 320 A+","01/08/2026","10:15","01/08/2026","12:40","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  229611 PACIENCIA BAÑARES             , JOSE DANIEL
+TCP
+---
+SC   976559 SOTO LLORCA                   ,AROA
+TP   019099 SANCHEZ MOYA                  ,ANDREA
+TP   020619 PANTA BRICEÑO                 ,ANDREA ALESSIA
+TP   398263 BRAVO VELASCO                 ,CRISTINA
+TP   029884 ABOU AL LAL ZERRAD            ,SAMIR
+---
+Comida en Aeropuerto despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"Firma 06:30 Pairing 3076","02/08/2026","06:30","02/08/2026","07:30","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB443  MAD0530-EAS0640 / 31A ","02/08/2026","07:30","02/08/2026","08:40","Falso","Verdadero","01/08/2026","18:30",,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+","",,"Normal","Falso","Normal","2"
+"IB444  EAS0720-MAD0830 / 31A ","02/08/2026","09:20","02/08/2026","10:30","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+","",,"Normal","Falso","Normal","2"
+"IB531  MAD0925-LIS1050 / 31A H+","02/08/2026","11:25","02/08/2026","12:50","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+Comida en Hotel despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB540  LIS0535-MAD0700 / 32D ","03/08/2026","07:35","03/08/2026","09:00","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   020596 AGUILAR CORDOBA               ,MARIA ELENA
+TP   027192 PREDICA                       ,DANA MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+","",,"Normal","Falso","Normal","2"
+"IB613  MAD0750-GVA0945 / 32D +O","03/08/2026","09:50","03/08/2026","11:45","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   020596 AGUILAR CORDOBA               ,MARIA ELENA
+TP   027192 PREDICA                       ,DANA MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB614  GVA1030-MAD1235 / 32D ","03/08/2026","12:30","03/08/2026","14:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  392394 CAMPOS RODRIGUEZ              , MARCIAL
+TCP
+---
+SC   015552 FERNANDEZ KASPRZYK            ,JULIA MARIE
+TP   019830 GONZALEZ CABALLERO            ,MARIA
+TP   020596 AGUILAR CORDOBA               ,MARIA ELENA
+TP   027192 PREDICA                       ,DANA MARIA
+TP   029883 QUINTEROS                     ,MACARENA
+---
+","",,"Normal","Falso","Normal","2"
+"Firma 06:00 Pairing 3372","04/08/2026","06:00","04/08/2026","07:00","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB711  MAD0500-LHR0725 / 320 ","04/08/2026","07:00","04/08/2026","09:25","Falso","Verdadero","03/08/2026","18:00",,,,,,,"
+TECNICOS
+--------
+CT->C2 484890 CID MENDEZ                    , JAVIER
+TCP
+---
+SC   626253 RELAÑO COTTA                  ,MARIA DE LOS ANGELES
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   025932 HUMANES ANTON                 ,IRENE
+TP   026907 CANO DIAZ                     ,LUCIA
+---
+","",,"Normal","Falso","Normal","2"
+"IB712  LHR0815-MAD1040 / 320 A+","04/08/2026","10:15","04/08/2026","12:40","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->C2 484890 CID MENDEZ                    , JAVIER
+TCP
+---
+SC   626253 RELAÑO COTTA                  ,MARIA DE LOS ANGELES
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   025932 HUMANES ANTON                 ,IRENE
+TP   026907 CANO DIAZ                     ,LUCIA
+---
+Comida en Aeropuerto despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"Firma 19:00 Pairing 3286","07/08/2026","19:00","07/08/2026","20:00","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB633  MAD1800-ZRH2020 / 32A +O","07/08/2026","20:00","07/08/2026","22:20","Falso","Verdadero","07/08/2026","16:00",,,,,,,"
+TECNICOS
+--------
+CT->E  399755 CARMONA JIMENEZ               , JOSE MANUEL
+TCP
+---
+SC   983951 CANTERO ABAD                  ,ANDREA
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   029270 SALAR MILLAN                  ,ANTONIO MANUEL
+TP   665092 MUR SAN MILLAN                ,CAROLINA TANIA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB628  ZRH0950-MAD1215 / 32D +O","08/08/2026","11:50","08/08/2026","14:15","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  399755 CARMONA JIMENEZ               , JOSE MANUEL
+TCP
+---
+SC   983951 CANTERO ABAD                  ,ANDREA
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   026332 IBARRA ARRANZ                 ,IRATI
+TP   029270 SALAR MILLAN                  ,ANTONIO MANUEL
+TP   665092 MUR SAN MILLAN                ,CAROLINA TANIA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB721  MAD1345-LHR1615 / 320 +O","08/08/2026","15:45","08/08/2026","18:15","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  399755 CARMONA JIMENEZ               , JOSE MANUEL
+TCP
+---
+SC   983951 CANTERO ABAD                  ,ANDREA
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   029270 SALAR MILLAN                  ,ANTONIO MANUEL
+TP   665092 MUR SAN MILLAN                ,CAROLINA TANIA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB722  LHR1745-MAD2010 / 320 ","08/08/2026","19:45","08/08/2026","22:10","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  399755 CARMONA JIMENEZ               , JOSE MANUEL
+TCP
+---
+SC   983951 CANTERO ABAD                  ,ANDREA
+TP   019868 ESCASO GUTIERREZ              ,NEREA
+TP   029270 SALAR MILLAN                  ,ANTONIO MANUEL
+TP   665092 MUR SAN MILLAN                ,CAROLINA TANIA
+---
+","",,"Normal","Falso","Normal","2"
+"Firma 09:20 Pairing 3622","10/08/2026","09:20","10/08/2026","10:35","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB953  MAD0835-OSL1220 / 320 +O","10/08/2026","10:35","10/08/2026","14:20","Falso","Verdadero","09/08/2026","21:20",,,,,,,"
+TECNICOS
+--------
+CT->I3 375314 MARTINEZ AYALDE               , JORGE
+TCP
+---
+SC   017229 PEREZ MARTINEZ                ,SUSANA
+TP   018317 BLANES MORENO                 ,JAVIER
+TP   026071 SANTANA DOMINGUEZ             ,YEISEL RAMONA
+TP   982091 CHELE EBUERA                  ,HECTOR
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB954  OSL1300-MAD1645 / 320 ","10/08/2026","15:00","10/08/2026","18:45","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->I3 375314 MARTINEZ AYALDE               , JORGE
+TCP
+---
+SC   017229 PEREZ MARTINEZ                ,SUSANA
+TP   018317 BLANES MORENO                 ,JAVIER
+TP   026071 SANTANA DOMINGUEZ             ,YEISEL RAMONA
+TP   982091 CHELE EBUERA                  ,HECTOR
+---
+","",,"Normal","Falso","Normal","2"
+"X - DIA LIBRE","11/08/2026","00:01","14/08/2026","23:59","Verdadero","Falso",,,,,,,,,,,"Normal","Falso","Normal","2"
+"Firma 13:55 Pairing 3407","15/08/2026","13:55","15/08/2026","14:55","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB719  MAD1255-LHR1520 / 320 A+","15/08/2026","14:55","15/08/2026","17:20","Falso","Verdadero","15/08/2026","10:55",,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida en Aeropuerto antes del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB720  LHR1610-MAD1835 / 320 ","15/08/2026","18:10","15/08/2026","20:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+","",,"Normal","Falso","Normal","2"
+"IB657  MAD1950-FCO2215 / 32D +O","15/08/2026","21:50","16/08/2026","00:15","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   019632 VIÑUELA VEGA                  ,JORGE
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB652  FCO1415-MAD1650 / 32A -H","16/08/2026","16:15","16/08/2026","18:50","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida en Hotel antes del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB839  MAD1800-ATH2140 / 320 +O","16/08/2026","20:00","16/08/2026","23:40","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB834  ATH1300-MAD1655 / 32A -H","17/08/2026","15:00","17/08/2026","18:55","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida en Hotel antes del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB603  MAD1810-BRU2030 / 320 H+","17/08/2026","20:10","17/08/2026","22:30","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida en Hotel despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB598  BRU1005-MAD1235 / 31A +O","18/08/2026","12:05","18/08/2026","14:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB755  MAD1440-DUS1710 / 321 +O","18/08/2026","16:40","18/08/2026","19:10","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   019890 HERAS MUÑOZ                   ,JACOB
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB756  DUS1755-MAD2035 / 321 ","18/08/2026","19:55","18/08/2026","22:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975851 CORTES GIMENEZ                , GERARDO JUAN
+TCP
+---
+SC   116045 GUTIERREZ ORTIZ               ,RAFAEL FELIX
+TP   018412 BARBADO PERAL                 ,ENYA
+TP   018717 DEL AGUILA ACEDO              ,DANIEL
+TP   019890 HERAS MUÑOZ                   ,JACOB
+TP   026948 SPIEWAK                       ,MIRANDA AGATA
+---
+","",,"Normal","Falso","Normal","2"
+"Firma 07:45 Pairing 3302","21/08/2026","07:45","21/08/2026","08:45","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB647  MAD0645-FCO0910 / 321 +O","21/08/2026","08:45","21/08/2026","11:10","Falso","Verdadero","20/08/2026","19:45",,,,,,,"
+TECNICOS
+--------
+CT->E  975542 DAROQUI LOPEZ                 , VICTOR
+TCP
+---
+SC   477492 MARTINEZ MARQUINA             ,EVA
+TP   020549 SANDE BALBOA                  ,LAURA
+TP   020569 BALLESTER GAJETE              ,NICOLAS
+TP   029276 SANCHEZ - MAJANO PINGARRON    ,IGNACIO
+TP   029876 TORTAJADA SILVESTRE           ,JOAQUIN
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB648  FCO1000-MAD1235 / 321 ","21/08/2026","12:00","21/08/2026","14:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  975542 DAROQUI LOPEZ                 , VICTOR
+TCP
+---
+SC   477492 MARTINEZ MARQUINA             ,EVA
+TP   020549 SANDE BALBOA                  ,LAURA
+TP   020569 BALLESTER GAJETE              ,NICOLAS
+TP   029276 SANCHEZ - MAJANO PINGARRON    ,IGNACIO
+TP   029876 TORTAJADA SILVESTRE           ,JOAQUIN
+---
+","",,"Normal","Falso","Normal","2"
+"Firma 07:45 Pairing 3302","22/08/2026","07:45","22/08/2026","08:45","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB647  MAD0645-FCO0910 / 32D +O","22/08/2026","08:45","22/08/2026","11:10","Falso","Verdadero","21/08/2026","19:45",,,,,,,"
+TECNICOS
+--------
+CT->U  975855 MARTINEZ NUÑEZ                , JAIME
+TCP
+---
+SC   324601 BARO CASAMAJO                 ,ALBERTO
+TP   012501 SENDIN EMILIANO               ,LAURA
+TP   019474 SIERRA SANMACARIO             ,MARINA
+TP   026072 MONTEIRO FERREIRA MOTA        ,SOFIA
+TP   026446 PINHEIRO TEIXEIRA             ,MARISA ISABEL
+---
+Comida de Tripulacion embarcada
+","",,"Normal","Falso","Normal","2"
+"IB648  FCO1000-MAD1235 / 32D ","22/08/2026","12:00","22/08/2026","14:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->U  975855 MARTINEZ NUÑEZ                , JAIME
+TCP
+---
+SC   324601 BARO CASAMAJO                 ,ALBERTO
+TP   012501 SENDIN EMILIANO               ,LAURA
+TP   019474 SIERRA SANMACARIO             ,MARINA
+TP   026072 MONTEIRO FERREIRA MOTA        ,SOFIA
+TP   026446 PINHEIRO TEIXEIRA             ,MARISA ISABEL
+---
+","",,"Normal","Falso","Normal","2"
+"CPI: Conoce nuestro Plan de Igualdad (e-learning)","25/08/2026","10:15","25/08/2026","11:14","Verdadero","Falso",,,,,,,,,,,"Normal","Falso","Normal","2"
+"Firma 06:30 Pairing 3084","26/08/2026","06:30","26/08/2026","07:30","Falso","Falso",,,,,,,,,,,"","Normal","Falso","Normal","2"
+"IB443  MAD0530-EAS0640 / 31A ","26/08/2026","07:30","26/08/2026","08:40","Falso","Verdadero","25/08/2026","18:30",,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+","",,"Normal","Falso","Normal","2"
+"IB444  EAS0720-MAD0830 / 31A ","26/08/2026","09:20","26/08/2026","10:30","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+","",,"Normal","Falso","Normal","2"
+"IB467  MAD0930-VGO1050 / 31A H+","26/08/2026","11:30","26/08/2026","12:50","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+Comida en Hotel despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB474  VGO0430-MAD0545 / 32A ","27/08/2026","06:30","27/08/2026","07:45","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019542 QIAO WANG                     ,DONGPING
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+","",,"Normal","Falso","Normal","2"
+"IB407  MAD0625-BCN0745 / 32A ","27/08/2026","08:25","27/08/2026","09:45","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019542 QIAO WANG                     ,DONGPING
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+","",,"Normal","Falso","Normal","2"
+"IB408  BCN0835-MAD1000 / 32A ","27/08/2026","10:35","27/08/2026","12:00","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019542 QIAO WANG                     ,DONGPING
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+","",,"Normal","Falso","Normal","2"
+"IB413  MAD1040-BCN1200 / 32A H+","27/08/2026","12:40","27/08/2026","14:00","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+TP   019479 GUILLEN PRADOS                ,ELENA
+TP   019542 QIAO WANG                     ,DONGPING
+TP   019597 GOMEZ GARCIA                  ,CARLOTA
+---
+Comida en Hotel despues del vuelo
+","",,"Normal","Falso","Normal","2"
+"IB426  BCN0500-MAD0625 / 32A ","28/08/2026","07:00","28/08/2026","08:25","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+---
+","",,"Normal","Falso","Normal","2"
+"IB597  MAD0705-BRU0925 / 32A ","28/08/2026","09:05","28/08/2026","11:25","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+---
+","",,"Normal","Falso","Normal","2"
+"IB604  BRU0505-MAD0735 / 320 ","29/08/2026","07:05","29/08/2026","09:35","Falso","Falso",,,,,,,,,"
+TECNICOS
+--------
+CT->E  015153 ALONSO JUSTE                  , MIGUEL ANGEL
+TCP
+---
+SC   010383 STEWART SIMPSON               ,WILLIAM RUSSELL
+---
+","",,"Normal","Falso","Normal","2"

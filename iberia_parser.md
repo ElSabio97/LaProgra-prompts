@@ -1,205 +1,215 @@
-# Importador CSV de Iberia
+### Importador CSV de Iberia
 
-## 1. Objetivo
+#### 1. Objetivo
 
 Procesar en el navegador el CSV mensual exportado por Iberia y convertirlo en eventos normalizados de LaProgra, sin subir ni conservar el archivo original ni datos personales innecesarios.
 
 Iberia no proporciona un nuevo CSV cuando modifica o cancela posteriormente un vuelo ya publicado. Esos cambios se reflejan manualmente en LaProgra por el propietario del evento.
 
-## 2. Privacidad
-
+#### 2. Privacidad
 - Todo el análisis del CSV se realiza en el navegador.
 - Solo se utilizan estas columnas:
-  - `Asunto`
-  - `Fecha de comienzo`
-  - `Comienzo`
-  - `Fecha de finalización`
-  - `Finalización`
-- El resto de columnas puede contener datos personales y debe descartarse inmediatamente. No se incluirá en eventos normalizados, previsualizaciones técnicas, telemetría, logs, informes de error ni peticiones de red.
-- La columna `Todo el día` no se utiliza, aunque exista en el CSV. Se descarta como cualquier otra columna no autorizada y no altera la semántica temporal del evento.
-- Tras el análisis se descartarán el archivo original, las filas originales y cualquier buffer que contenga columnas no autorizadas.
-- Solo se enviarán al servidor eventos normalizados y metadatos técnicos mínimos.
+  - `Asunto`;
+  - `Fecha de comienzo`;
+  - `Comienzo`;
+  - `Fecha de finalización`;
+  - `Finalización`.
+- La columna `Todo el día` no se utiliza, aunque exista. Se descarta como cualquier otra columna no autorizada y no altera la semántica temporal.
+- El resto de columnas se descarta y no se incluye en eventos normalizados, previsualizaciones, telemetría, logs, errores ni peticiones de red.
+- Tras el análisis se eliminan las referencias al archivo original, filas originales y buffers temporales que no sean necesarios.
+- El archivo original nunca se sube a un servidor ni se almacena en una base de datos.
+- Solo se envían al servidor eventos normalizados confirmados por el usuario y metadatos técnicos mínimos.
+- No se genera informe descargable de las filas originales o descartadas.
 
-## 3. Entrada admitida
-
+#### 3. Entrada admitida
 - Archivo CSV mensual exportado por Iberia.
 - Tamaño máximo inicial: 10 MB, configurable.
-- Admitir UTF-8 y detectar de forma segura otras codificaciones habituales del exportador, incluida Windows-1252.
-- Detectar el delimitador entre las variantes explícitamente admitidas.
+- Admitir UTF-8 y detectar de forma segura otras codificaciones habituales, incluida Windows-1252.
+- Detectar el delimitador entre variantes expresamente admitidas.
 - El MIME es orientativo y no sustituye la validación del contenido.
-- Rechazar archivos vacíos, binarios, excesivamente grandes, con estructura desconocida o con filas desproporcionadas.
-- Las cinco cabeceras requeridas deben existir exactamente. Pueden existir columnas adicionales, pero se ignorarán.
+- Rechazar archivos vacíos, binarios, excesivamente grandes, con estructura desconocida o filas desproporcionadas.
+- Las cinco cabeceras requeridas deben existir exactamente. Pueden existir otras columnas, pero se ignoran.
+- Usar un parser CSV conforme con campos entrecomillados, comas dentro de campos, comillas escapadas y campos multilínea. No dividir el archivo por líneas o comas de forma manual.
 
-## 4. Zona horaria y fechas
-
+#### 4. Zona horaria y fechas
 - En el formato observado, las fechas usan `dd/MM/yyyy` y las horas `HH:mm`.
 - Los valores están expresados en hora local de Madrid.
-- La zona horaria de origen es `Europe/Madrid`; no se utilizará un offset fijo.
-- Para cada fila se combinarán:
-  - `Fecha de comienzo` + `Comienzo`
-  - `Fecha de finalización` + `Finalización`
-- Se conservará `Europe/Madrid` como zona horaria original y se almacenarán los instantes normalizados en UTC.
+- La zona de origen es `Europe/Madrid`; no se utiliza un offset fijo.
+- Para cada fila se combinan:
+  - `Fecha de comienzo` + `Comienzo`;
+  - `Fecha de finalización` + `Finalización`.
+- Se conserva `Europe/Madrid` como zona original y se almacenan instantes normalizados en UTC.
 - El final debe ser posterior al inicio.
-- Una hora local inexistente o ambigua por un cambio DST que no pueda resolverse con los datos disponibles se marcará como ambigua; no se elegirá silenciosamente un offset.
+- Una hora local inexistente o repetida por DST que no pueda resolverse se clasifica determinísticamente como ambigua; no se elige silenciosamente un offset.
+- `Todo el día` y las horas contenidas en `Asunto` no intervienen en la determinación temporal.
 
-## 5. Flujo de procesamiento
-
+#### 5. Flujo de procesamiento
 1. Validar nombre, tamaño, MIME orientativo y firma de contenido.
-2. Detectar una codificación y un delimitador admitidos.
-3. Leer la cabecera y comprobar las cinco columnas requeridas.
-4. Proyectar inmediatamente cada fila a las cinco columnas autorizadas y descartar el resto.
+2. Detectar codificación y delimitador admitidos.
+3. Leer cabecera y comprobar las cinco columnas requeridas.
+4. Proyectar cada fila a las cinco columnas autorizadas y descartar el resto.
 5. Validar y normalizar fechas y horas con `Europe/Madrid`.
-6. Clasificar el valor de `Asunto` siguiendo el orden indicado en este documento.
-7. Crear eventos normalizados o incidencias de importación.
-8. Mostrar una previsualización con filas aceptadas, rechazadas y ambiguas.
-9. Enviar al servidor únicamente los eventos confirmados por el usuario.
-10. Ejecutar un upsert idempotente.
-11. Descartar el archivo y los datos temporales locales.
+6. Clasificar `Asunto` siguiendo el orden de este documento.
+7. Aplicar la ventana de almacenamiento para la previsualización.
+8. Crear eventos normalizados o incidencias locales.
+9. Mostrar previsualización con filas aceptadas, rechazadas, ambiguas y omitidas.
+10. Mantener la previsualización hasta que el usuario la acepte o importe otro archivo.
+11. Al confirmar, recalcular la ventana vigente en la zona del perfil.
+12. Enviar solo los eventos confirmados que sigan dentro de la ventana.
+13. Ejecutar un upsert idempotente.
+14. Descartar el archivo y datos temporales locales.
 
-## 6. Clasificación del campo Asunto
+#### 6. Clasificación de `Asunto`
 
 Aplicar este orden y detenerse en la primera coincidencia:
-
 1. Coincidencia exacta con `iberia_codes.csv`.
 2. Fila de firma.
 3. Vuelo y ruta.
 4. Actividad desconocida.
 
-### 6.1 Coincidencia exacta con iberia_codes.csv
-
-- Comparar el contenido completo y exacto de `Asunto` con la columna `ID` de `iberia_codes.csv`.
+##### 6.1 Coincidencia exacta con `iberia_codes.csv`
+- Comparar el contenido completo y exacto de `Asunto` con la columna `ID`.
 - No comparar únicamente el código anterior al guion.
-- No realizar coincidencias parciales, por prefijo, por similitud ni aproximadas.
-- Los aparentes errores ortográficos, diferencias de espaciado y variantes históricas del catálogo son literales y no deben corregirse ni fusionarse.
-- Si existe coincidencia exacta:
-  - `slab` será el valor de `SLAB`.
-  - `description` será el valor de `DESCRIPTION`.
+- No realizar coincidencias parciales, por prefijo, similitud ni aproximación.
+- Los errores ortográficos, espaciado y variantes históricas son literales y no se corrigen.
+- Si coincide:
+  - `slab` será `SLAB`;
+  - `description` será `DESCRIPTION`.
 - Las descripciones del catálogo son literales y no se traducen.
+- Si hay varias coincidencias, se utiliza la primera fila según el orden original.
 
-### 6.2 Fila de firma
+##### 6.2 Fila de firma
 
 Formato observado: `Firma 13:55 Pairing 3010`.
-
-- La hora de firma se obtiene de `Comienzo`; el texto de `Asunto` se usa como comprobación cruzada.
+- La hora de firma se obtiene de `Comienzo`; el texto de `Asunto` solo reconoce la fila.
 - El número posterior a `Pairing` identifica la línea cuando esté presente.
-- La firma se asocia al primer vuelo inmediatamente posterior cuando:
-  - el final de la firma coincide exactamente con el inicio del vuelo; y
-  - la fila posterior se reconoce como vuelo.
-- La firma no crea evento ni slab independiente. Sirve exclusivamente para enriquecer el horario del primer vuelo del pairing.
+- La firma se asocia exclusivamente a la fila física inmediatamente posterior cuando:
+  - el final de la firma coincide exactamente con el inicio del vuelo;
+  - la fila inmediatamente posterior se reconoce como vuelo.
+- No se saltan filas inválidas, omitidas o desconocidas para buscar otro vuelo.
+- La firma no crea evento ni slab independiente. Solo enriquece el primer vuelo contiguo.
 - Español: `12:00 - 13:00 (firma 11:00)`.
 - Inglés: `12:00 - 13:00 (report 11:00)`.
-- La firma no sustituye el inicio del vuelo y no se añade a los vuelos siguientes del pairing.
-- Si no puede asociarse inequívocamente al vuelo posterior, se marca como ambigua y no se vincula por aproximación.
+- La firma no sustituye el inicio del vuelo ni se añade a vuelos siguientes.
+- Si no puede asociarse inequívocamente, se marca como ambigua y no se vincula.
 
-### 6.3 Vuelo y ruta
+##### 6.3 Vuelo y ruta
 
-Formato observado: `IB415  MAD1255-BCN1415 / 32A A+`.
+Formato observado: `IB415 MAD1255-BCN1415 / 32A A+`.
 
-Extraer como mínimo:
-
+Extraer únicamente:
 - número de vuelo;
 - origen IATA;
-- destino IATA;
+- destino IATA.
 
 Reglas:
+- Inicio: exclusivamente `Fecha de comienzo` + `Comienzo`.
+- Fin: exclusivamente `Fecha de finalización` + `Finalización`.
+- Las horas incluidas en `Asunto` no se extraen, almacenan, convierten, comparan ni validan. Solo forman parte de la estructura textual para localizar vuelo, origen y destino.
+- El texto adicional posterior a la ruta se descarta y no se muestra ni almacena.
+- Consultar `airports.csv` para ciudades.
+- Mostrar ciudades como `Madrid - Barcelona` cuando ambos IATA estén presentes.
+- Si un aeropuerto no existe, conservar IATA y generar advertencia no bloqueante.
+- El slab será la ruta IATA, por ejemplo `MAD-BCN`.
 
-- La fecha y hora de inicio se obtienen exclusivamente de `Fecha de comienzo` + `Comienzo`.
-- La fecha y hora de finalización se obtienen exclusivamente de `Fecha de finalización` + `Finalización`.
-- Las horas incluidas dentro de `Asunto` no se extraen, almacenan, convierten, comparan ni validan. Solo pueden formar parte de la estructura textual necesaria para reconocer el formato y localizar el número de vuelo, el origen y el destino.
-- Consultar `airports.csv` para obtener las ciudades de origen y destino.
-- La descripción incluirá las ciudades con el formato `Madrid - Barcelona` cuando ambos IATA estén presentes.
-- Si un aeropuerto no existe en el catálogo, conservar el IATA y generar una advertencia no bloqueante.
-- El slab del vuelo será la ruta IATA, por ejemplo `MAD-BCN`.
-
-#### 6.3.1 Vuelo operado y vuelo en situación
-
-La clasificación se determina por el prefijo del número de vuelo:
-
+###### 6.3.1 Vuelo operado y vuelo en situación
 - `IB`: vuelo operado por el tripulante para Iberia.
-- `VS`: código interno de Iberia que indica un vuelo en situación o deadhead realizado en Iberia. `VS` no se busca en `airlines.csv` ni en `iberia_codes.csv`. Para presentación se sustituye por `IB`, conservando la parte numérica.
-- Cualquier otro prefijo IATA: vuelo en situación o deadhead realizado en otra aerolínea. Resolver el nombre mediante búsqueda por `IATA` en `airlines.csv`.
-- Si la búsqueda por IATA devuelve varias filas, utilizar siempre la primera coincidencia según el orden original de `airlines.csv`.
-
-Descripción del deadhead:
-
+- `VS`: código interno de Iberia para vuelo en situación realizado en Iberia. No se busca en `airlines.csv` ni `iberia_codes.csv`; para presentación se sustituye por `IB`, conservando la parte numérica.
+- Cualquier otro prefijo IATA: vuelo en situación de otra aerolínea, resuelto por IATA en `airlines.csv`.
+- Si hay varias filas, usar la primera según el orden original.
 - Español: `Vuelo en situación {aerolínea} {número de vuelo}`.
 - Inglés: `Deadhead flight on {aerolínea} {número de vuelo}`.
+- Mostrar además las ciudades de origen y destino.
+- Si el prefijo no existe, conservar código y número, usar el código como nombre provisional y generar advertencia no bloqueante.
+- La lógica admite futuras aerolíneas sin lista cerrada.
 
-Ejemplos:
+##### 6.4 Actividad desconocida
+- Slab español: `N/D`.
+- Slab inglés: `N/A`.
+- Descripción: valor completo de `Asunto`, sin corregir ni traducir.
+- Mostrar advertencia en la previsualización sin invalidar necesariamente el archivo.
 
-- `VS2344` se presenta como `Vuelo en situación Iberia IB2344` / `Deadhead flight on Iberia IB2344`.
-- `FR2344` se presenta como `Vuelo en situación Ryanair FR2344` / `Deadhead flight on Ryanair FR2344`.
+#### 7. Identidad e idempotencia
+- Cada evento tendrá `source_uid` estable.
+- Si la fuente no proporciona identificador fiable, generar una huella determinista con compañía, fecha operativa, código o tipo, origen, destino, inicio y fin normalizados.
+- Dos filas con huella idéntica se consideran duplicadas y generan un único evento.
+- La huella reconoce una reimportación idéntica; no se usa para deducir actualizaciones posteriores.
+- Importar dos veces el mismo archivo o programación no duplica eventos.
 
-Si el prefijo no existe en `airlines.csv`, conservar el código y el número, usar el código como nombre provisional de aerolínea y generar una advertencia no bloqueante. La lógica debe admitir futuras aerolíneas sin una lista cerrada.
+#### 8. Cambios posteriores
 
-### 6.4 Actividad desconocida
-
-Si el `Asunto` no coincide con el catálogo y no es una firma ni un vuelo:
-
-- slab español: `N/D`;
-- slab inglés: `N/A`;
-- descripción: valor completo de `Asunto`, sin corregirlo ni traducirlo;
-- advertencia en la previsualización, sin invalidar necesariamente el archivo.
-
-## 7. Identidad e idempotencia
-
-- Cada evento tendrá un `source_uid` estable.
-- Si la fuente no proporciona un identificador fiable, se generará una huella determinista con compañía, fecha operativa, código o tipo, origen, destino, inicio y fin normalizados.
-- La huella sirve para reconocer una reimportación idéntica y evitar duplicados; no se usará para deducir actualizaciones posteriores proporcionadas por Iberia, porque Iberia no facilita un CSV actualizado cuando cambia o cancela un vuelo.
-- Importar dos veces el mismo archivo o la misma programación no debe duplicar eventos.
-
-## 8. Cambios posteriores a la importación
-
-### 8.1 Cambio de horario u otros datos
-
-- Si Iberia cambia posteriormente el horario u otro dato del evento, el propietario lo edita manualmente en LaProgra.
+##### 8.1 Cambio de horario u otros datos
+- El propietario edita manualmente los cambios posteriores.
 - Las modificaciones se almacenan por campo en `event_overrides`.
-- El registro de origen importado se conserva sin mutarlo.
-- El evento efectivo que se muestra en calendario, amistades y PDF resulta de aplicar los overrides sobre el origen.
+- Campos editables:
+  - fecha y hora de comienzo;
+  - fecha y hora de finalización;
+  - hora de firma;
+  - número de pairing;
+  - número de vuelo;
+  - origen;
+  - destino;
+  - descripción.
+- El origen importado se conserva sin mutarlo.
+- Al cambiar origen o destino, recalcular slab y ciudades con `airports.csv`.
+- Si la descripción tiene override, conservarla y no sobrescribirla al cambiar ruta.
+- El evento efectivo mostrado resulta de aplicar overrides sobre el origen.
 
-### 8.2 Cancelación
-
-- Si Iberia cancela posteriormente un evento, el propietario lo elimina manualmente en LaProgra.
+##### 8.2 Cancelación
+- El propietario elimina manualmente el evento.
 - La eliminación se guarda como tombstone.
-- El evento deja de aparecer en calendario, vistas compartidas, comparaciones y PDF.
+- Deja de aparecer en calendario, vistas compartidas, comparaciones y PDF.
 
-### 8.3 Reimportación accidental
+##### 8.3 Reimportación accidental
+- No duplicar eventos.
+- No sobrescribir overrides.
+- No reactivar tombstones.
+- No restaurar valores originales sobre valores editados.
+- No emparejar por proximidad temporal un evento diferente.
+- No deducir que un evento con horario, ruta o número distinto actualiza otro anterior.
 
-Si el usuario vuelve a importar el mismo CSV o la misma programación:
+#### 9. Previsualización y errores
 
-1. no duplicar eventos;
-2. no sobrescribir overrides;
-3. no reactivar tombstones;
-4. no restaurar los valores originales sobre los valores editados;
-5. no intentar emparejar por proximidad temporal un evento diferente.
-
-No se intentará deducir automáticamente que un evento con horario, ruta o número de vuelo distinto es una actualización de otro evento previamente importado.
-
-## 9. Previsualización y errores
-
-Mostrar:
-
+Mostrar localmente:
 - filas aceptadas;
 - filas rechazadas;
 - filas ambiguas;
+- filas omitidas por ventana;
 - asuntos desconocidos;
 - errores de fecha y hora;
-- aeropuertos o aerolíneas desconocidos.
+- aeropuertos o aerolíneas desconocidos;
+- duplicados detectados.
 
-Los mensajes serán accionables y no incluirán columnas descartadas ni datos personales. Se podrá descargar un informe saneado.
+Los mensajes serán accionables y no incluirán columnas descartadas ni datos personales. No habrá informe descargable.
 
-## 10. Criterios de aceptación
+#### 10. Ventana de almacenamiento
+- Solo se almacenan eventos que se solapen con el mes anterior, actual o siguiente, calculados en la zona del perfil.
+- Un evento que empiece fuera y termine dentro, o viceversa, se conserva completo.
+- Se omite solo cuando queda completamente fuera.
+- Una importación con todos los eventos fuera se rechaza antes de confirmar.
+- Si mezcla filas dentro y fuera, se aceptan solo las que se solapan y las demás se muestran como omitidas.
+- Al confirmar, recalcular la ventana vigente y volver a validar los eventos.
+- La limpieza automática elimina también overrides y tombstones dependientes de eventos fuera de ventana.
 
-- El CSV original nunca sale del navegador.
+#### 11. Criterios de aceptación
+- El CSV original nunca sale del navegador ni se almacena en servidor o base de datos.
 - Solo se usan las cinco columnas autorizadas.
-- Las columnas adicionales no aparecen en red, logs o errores.
-- La coincidencia con `iberia_codes.csv` usa el `Asunto` completo y es exacta.
-- Una firma válida enriquece el primer vuelo contiguo y no crea un evento independiente.
-- `IB` es operado; `VS` es deadhead en Iberia; cualquier otro prefijo es deadhead y resuelve la aerolínea mediante `airlines.csv`.
-- Importar dos veces el mismo archivo no duplica eventos.
-- Un cambio manual sobrevive a una reimportación idéntica.
-- Una eliminación manual sobrevive a una reimportación idéntica.
-- No se intenta detectar actualizaciones posteriores de Iberia mediante tolerancias horarias.
-- Las fechas alrededor de DST se procesan de forma determinista.
-- Los horarios incluidos en `Asunto` no se usan para determinar, comprobar ni enriquecer los horarios del evento.
+- `Todo el día` y columnas adicionales no aparecen en red, logs ni errores.
+- Un campo descartado con comas y saltos de línea no rompe el parseo ni la alineación de filas.
+- La coincidencia usa `Asunto` completo y exacto.
+- Una firma válida enriquece solo el vuelo de la fila física inmediatamente posterior.
+- No se saltan filas para asociar una firma.
+- `IB` es operado; `VS` es vuelo en situación en Iberia; otros prefijos resuelven aerolínea.
+- Ante varias aerolíneas, se escoge la primera fila del catálogo.
+- Las horas de `Asunto` no determinan, comprueban ni enriquecen el horario.
+- El texto adicional del vuelo se descarta.
+- `Todo el día=Verdadero` no transforma el intervalo ni corrige `00:01` o `23:59`.
+- Dos huellas idénticas se consideran duplicado y generan un único evento.
+- Una reimportación no duplica, no sobrescribe overrides y no reactiva tombstones.
+- Solo son editables los campos definidos y un cambio de ruta recalcula slab y ciudades.
+- No se detectan actualizaciones mediante tolerancias horarias.
+- Las fechas DST válidas se convierten determinísticamente; las inexistentes o repetidas sin información suficiente se clasifican como ambiguas.
 - Una fila inválida no invalida necesariamente todo el archivo.
+- Se conservan completos los eventos con solapamiento parcial.
+- La previsualización permanece hasta aceptar o reimportar; al aceptar se recalcula la ventana vigente.
+- No se ofrece informe descargable.
