@@ -17,6 +17,7 @@ Iberia no proporciona un nuevo CSV cuando modifica o cancela posteriormente un v
 - La columna `Todo el día` no se utiliza, aunque exista. Se descarta como cualquier otra columna no autorizada y no altera la semántica temporal.
 - El resto de columnas se descarta y no se incluye en eventos normalizados, previsualizaciones, telemetría, logs, errores ni peticiones de red.
 - Tras el análisis se eliminan las referencias al archivo original, filas originales y buffers temporales que no sean necesarios.
+- La previsualización y sus derivados se aíslan por cuenta, compañía, versión de parser, catálogo, configuración y ventana. Se eliminan de IndexedDB, almacenamiento local, Cache Storage, blobs y cachés del Service Worker al aceptar, reimportar, cerrar sesión, cambiar de aerolínea o borrar la cuenta. Tras cerrar sesión o iniciar eliminación, la aplicación no puede reabrir la preview offline.
 - El archivo original nunca se sube a un servidor ni se almacena en una base de datos.
 - Solo se envían al servidor eventos normalizados confirmados por el usuario y metadatos técnicos mínimos.
 - No se genera informe descargable de las filas originales o descartadas.
@@ -40,8 +41,13 @@ Iberia no proporciona un nuevo CSV cuando modifica o cancela posteriormente un v
   - `Fecha de finalización` + `Finalización`.
 - Se conserva `Europe/Madrid` como zona original y se almacenan instantes normalizados en UTC.
 - El final debe ser posterior al inicio.
-- Una hora local inexistente o repetida por DST que no pueda resolverse se clasifica determinísticamente como ambigua; no se elige silenciosamente un offset.
-- `Todo el día` y las horas contenidas en `Asunto` no intervienen en la determinación temporal.
+- Ante una hora local repetida o inexistente por DST, pueden consultarse excepcionalmente las horas UTC informativas contenidas en `Asunto`. Si identifican de forma única y coherente los instantes, se utilizan.
+- En una hora repetida se consideran los dos candidatos UTC. En una hora inexistente, la hora UTC informativa puede actuar excepcionalmente como fuente del instante.
+- Generar todos los candidatos UTC compatibles con los valores locales y `Europe/Madrid`. La información UTC utilizable de `Asunto` filtra esos candidatos solo para la excepción DST. Si queda una única pareja coherente, se utiliza.
+- Si quedan varias parejas, elegir para inicio o firma el candidato más temprano y, para final, el candidato posterior que mantenga `fin > inicio` y produzca el intervalo de mayor duración entre los compatibles.
+- Si una hora inexistente queda determinada de forma única y coherente por la información UTC de `Asunto`, puede utilizarse; en otro caso la fila queda ambigua.
+- Si no puede formarse un intervalo coherente, la fila queda ambigua y no genera evento automático.
+- Estas horas de `Asunto` no se conservan, muestran ni usan fuera de la excepción DST. `Todo el día` tampoco interviene en la determinación temporal.
 
 #### 5. Flujo de procesamiento
 1. Validar nombre, tamaño, MIME orientativo y firma de contenido.
@@ -53,11 +59,12 @@ Iberia no proporciona un nuevo CSV cuando modifica o cancela posteriormente un v
 7. Aplicar la ventana de almacenamiento para la previsualización.
 8. Crear eventos normalizados o incidencias locales.
 9. Mostrar previsualización con filas aceptadas, rechazadas, ambiguas y omitidas.
-10. Mantener la previsualización hasta que el usuario la acepte o importe otro archivo.
-11. Al confirmar, recalcular la ventana vigente en la zona del perfil.
-12. Enviar solo los eventos confirmados que sigan dentro de la ventana.
-13. Ejecutar un upsert idempotente.
-14. Descartar el archivo y datos temporales locales.
+10. Mantener la previsualización en almacenamiento exclusivamente local hasta aceptar o importar otro archivo. Conservar solo la proyección autorizada y los resultados normalizados; nunca el CSV original, buffers, filas completas ni columnas descartadas. Eliminarla al aceptar, reimportar, cerrar sesión, cambiar de aerolínea o borrar la cuenta. Si cambia parser, catálogo o configuración, exigir volver a seleccionar el archivo.
+11. En pantallas estrechas usar tarjetas y en amplias una tabla equivalente. Rotar o redimensionar no reprocesa el CSV y conserva filtros, detalles y, cuando sea viable, el primer elemento visible.
+12. Al confirmar, recalcular la ventana vigente en la zona del perfil.
+13. Enviar solo los eventos confirmados que sigan dentro de la ventana.
+14. Ejecutar un upsert idempotente.
+15. Descartar el archivo y datos temporales locales.
 
 #### 6. Clasificación de `Asunto`
 
@@ -105,7 +112,7 @@ Extraer únicamente:
 Reglas:
 - Inicio: exclusivamente `Fecha de comienzo` + `Comienzo`.
 - Fin: exclusivamente `Fecha de finalización` + `Finalización`.
-- Las horas incluidas en `Asunto` no se extraen, almacenan, convierten, comparan ni validan. Solo forman parte de la estructura textual para localizar vuelo, origen y destino.
+- Las horas incluidas en `Asunto` no se extraen, almacenan, convierten, comparan ni validan en el flujo ordinario. Solo forman parte de la estructura textual para localizar vuelo, origen y destino. La única excepción es la desambiguación de una hora repetida por DST definida en la sección 4.
 - El texto adicional posterior a la ruta se descarta y no se muestra ni almacena.
 - Consultar `airports.csv` para ciudades.
 - Mostrar ciudades como `Madrid - Barcelona` cuando ambos IATA estén presentes.
@@ -131,7 +138,7 @@ Reglas:
 
 #### 7. Identidad e idempotencia
 - Cada evento tendrá `source_uid` estable.
-- Si la fuente no proporciona identificador fiable, generar una huella determinista con compañía, fecha operativa, código o tipo, origen, destino, inicio y fin normalizados.
+- Generar una huella determinista y versionada con integración `iberia`, clase normalizada, identificador funcional, origen y destino cuando existan, e instantes UTC de inicio y fin. El identificador funcional será el número de vuelo normalizado, el ID exacto del catálogo o `Asunto` literal para una actividad desconocida. No deducir otra fecha operativa.
 - Dos filas con huella idéntica se consideran duplicadas y generan un único evento.
 - La huella reconoce una reimportación idéntica; no se usa para deducir actualizaciones posteriores.
 - Importar dos veces el mismo archivo o programación no duplica eventos.
@@ -208,8 +215,17 @@ Los mensajes serán accionables y no incluirán columnas descartadas ni datos pe
 - Una reimportación no duplica, no sobrescribe overrides y no reactiva tombstones.
 - Solo son editables los campos definidos y un cambio de ruta recalcula slab y ciudades.
 - No se detectan actualizaciones mediante tolerancias horarias.
-- Las fechas DST válidas se convierten determinísticamente; las inexistentes o repetidas sin información suficiente se clasifican como ambiguas.
+- Las fechas DST se convierten determinísticamente enumerando candidatos UTC. Una hora repetida o inexistente usa excepcionalmente la información UTC de `Asunto` si determina una pareja única y coherente; si persisten alternativas se aplica la selección conservadora de la sección 4, y si no existe intervalo coherente la fila es ambigua.
 - Una fila inválida no invalida necesariamente todo el archivo.
 - Se conservan completos los eventos con solapamiento parcial.
 - La previsualización permanece hasta aceptar o reimportar; al aceptar se recalcula la ventana vigente.
+- Cerrar sesión, cambiar de aerolínea o borrar la cuenta purga toda copia local y una reapertura offline no muestra datos de la cuenta anterior.
 - No se ofrece informe descargable.
+
+
+#### 12. Estado y decisiones consolidadas
+- **correcta:** todos los elementos procesables se resolvieron; ventana, duplicados y avisos no bloqueantes no alteran por sí solos el estado.
+- **parcial:** se almacenó al menos un evento y otro elemento no pudo convertirse por error individual.
+- **fallida:** no se almacenó ningún evento por fallo.
+- Iberia no publica CSV posteriores con eventos modificados: cambios y cancelaciones se gestionan solo mediante overrides y tombstones, sin reconciliar CSV distintos.
+- Al salir de ventana se eliminan estrictamente evento, overrides y tombstone; si el periodo vuelve a entrar y se reimporta, el evento puede reaparecer.

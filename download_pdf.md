@@ -43,3 +43,13 @@ Optimizada para impresión. No depende de fondos de color; utiliza texto, bordes
 - Los eventos temporizados muestran la hora correspondiente a la zona seleccionada.
 - Las reglas de compartición y preferencias locales se respetan.
 - Si un día desborda, se pagina sin pérdida de eventos.
+
+
+#### Planificación determinista y validación
+- Crear un `LayoutPlan` inmutable desde una instantánea autorizada; fragmentar por fechas, ordenar antes de medir y medir con la tipografía final.
+- Paginar primero por semanas completas. Dividir semanas en partes consecutivas y, para desbordamientos extraordinarios, continuar días en páginas de lista con referencias explícitas.
+- No reducir por debajo de mínimos de legibilidad para evitar paginar. La leyenda puede ocupar página propia.
+- Color y blanco y negro renderizan el mismo plan con temas métricamente equivalentes.
+- Validar que todo evento autorizado tiene fragmento, ninguno ajeno aparece, las continuaciones apuntan a páginas reales y todo queda dentro del área imprimible.
+- Renderizar temporalmente, verificar y entregar solo tras superar todas las comprobaciones. Si no puede garantizarse la integridad, cancelar sin PDF parcial.
+- Aislar temporales por exportación y cuenta; eliminar PDF parciales, buffers, imágenes y fuentes intermedias tras entrega, fallo, cancelación o timeout. No incorporar temporales a cachés persistentes ni copias de seguridad propias.

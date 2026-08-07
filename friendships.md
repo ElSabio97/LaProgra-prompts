@@ -21,6 +21,7 @@ Solo el destinatario acepta o rechaza; solo el remitente cancela una solicitud p
 - Ocultar una amistad no cambia los permisos concedidos por la otra persona.
 - La amistad permanece aceptada y puede volver a mostrarse en cualquier momento.
 - Tener una amistad agregada no obliga a mostrar su programación.
+- El calendario conjunto superpone la programación propia y las programaciones de las amistades visibles, sin límite funcional de slabs por celda y sin ocultarlos mediante overflow.
 
 ### 4. Compartición controlada por el propietario
 
@@ -84,4 +85,5 @@ La regla más restrictiva prevalece:
 - Las reglas globales, particulares y exclusiones por evento aplican la opción más restrictiva.
 - Una amistad excluida no puede recuperar el evento mediante UI ni API.
 - RLS impide consultar relaciones o eventos ajenos no compartidos.
-- PDF y comparaciones respetan la misma visibilidad que la vista interactiva.
+- PDF y calendario conjunto respetan la misma visibilidad que la vista interactiva.
+- La superposición de cualquier número de amistades no recorta, agrupa ni oculta slabs; las filas crecen según sea necesario.
